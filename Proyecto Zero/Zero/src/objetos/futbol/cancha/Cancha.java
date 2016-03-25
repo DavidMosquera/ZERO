@@ -76,7 +76,7 @@ class Cancha {
 	public double getPosicionRobot_y(){
 		return PosicionRobot_y;
 	}
-	public double getDireccionRobot(){
+	public int getDireccionRobot(){
 		return DireccionRobot;
 	}
 	
