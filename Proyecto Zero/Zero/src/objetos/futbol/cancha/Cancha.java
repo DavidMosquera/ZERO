@@ -70,13 +70,13 @@ class Cancha {
 		this.DireccionRobot=DireccionRobot;
 	}
 	//get (no se si quitarlos)
-	public void getPosicionRobot_x(){
+	public double getPosicionRobot_x(){
 		return PosicionRobot_x;
 	}
-	public void getPosicionRobot_y(){
+	public double getPosicionRobot_y(){
 		return PosicionRobot_y;
 	}
-	public void getDireccionRobot(){
+	public double getDireccionRobot(){
 		return DireccionRobot;
 	}
 	
