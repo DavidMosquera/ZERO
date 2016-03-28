@@ -1,10 +1,10 @@
 package objetos.futbol.jugadores;
 //IMPORTANTE:
-//EDITABLE, AUN NO SABEMOS DONDE EST¡N LOS MOTORES DEL ROBOT.
-//TODAS LAS MEDIDAS SE ENCUENTRAN EN mm (milÌmetros)
+//EDITABLE, AUN NO SABEMOS DONDE EST√ÅN LOS MOTORES DEL ROBOT.
+//TODAS LAS MEDIDAS SE ENCUENTRAN EN mm (mil√≠metros)
 public class Futbolista {
-	//Ponemos los motores como atributos de cada futbolista para dar informaciÛn a los
-	// otros mÈtodos. D#11
+	//Ponemos los motores como atributos de cada futbolista para dar informaci√≥n a los
+	// otros m√©todos. D#11
 	private String nombre;
 	private final String posicion;
 	public JugadaCompleja[] listaJugadas;
@@ -13,7 +13,7 @@ public class Futbolista {
 	public Futbolista(String nombre, String posicion, JugadaCompleja[] listaJugadas){
 		this.nombre=nombre;
 		this.posicion=posicion;
-		this.listaJugadas=listaJugadas;// øPodemos poner directamente la lista o 
+		this.listaJugadas=listaJugadas;// ¬øPodemos poner directamente la lista o 
 		                               // crear una nueva D#7?
 	}
 	public String toString(){
@@ -26,9 +26,9 @@ public class Futbolista {
 		else{
 			return false;
 		}
-		//Duda, øse tiene que comparar tambiÈn las jugadas que tienen cada jugador?
+		//Duda, ¬øse tiene que comparar tambi√©n las jugadas que tienen cada jugador?
 	}
-	public  boolean jugarConLasManos(){ // si el metodo es abstracto, debemos poner una	                               // clase abstracta, øcÛmo lo solucionamos?
+	public  boolean jugarConLasManos(){ // si el metodo es abstracto, debemos poner una	                               // clase abstracta, ¬øc√≥mo lo solucionamos?
 		if (this.posicion.compareTo("Portero")==0){
 			return true;
 		}
@@ -36,8 +36,12 @@ public class Futbolista {
 			return false;
 		}
 	}
-	// Suponemos el uso de mÈtodos para accesar a las variables
+	// Suponemos el uso de m√©todos para accesar a las variables
 	public void setNombre(String nombre){
 		this.nombre=nombre;
+	}
+	public String getPosicion(){
+		return this.posicion;
+		//pusimos el this para que quede mas bonito y nos evitamos errores
 	}
 }
