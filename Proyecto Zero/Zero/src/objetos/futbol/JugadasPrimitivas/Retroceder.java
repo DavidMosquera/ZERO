@@ -1,15 +1,21 @@
 package objetos.futbol.JugadasPrimitivas;
+import lejos.nxt.*;//mirar descripcion en Adelantar
 
 class Retroceder extends jugadaPrimitiva {
 	public Retroceder(int potencia, String nombre){
 		this.potencia= potencia;
 		this.nombre=nombre;
+		Motor.A.setSpeed(potencia);
+		Motor.B.setSpeed(potencia);
 	}
 	public void ejecutar(){
-		//pendiente!!! con los motores
-		//los dos motores hacia atr·s
+		Motor.A.backward();//izquierdo
+		Motor.B.backward();//derecho
+		//los dos motores hacia atr√°s
 	}
 	public void parar(){
-       //Stop() ambos motores (PENDIENTE!!!)
+		Motor.A.stop();
+		Motor.B.stop();
+		//para los motores
 	}
 }
