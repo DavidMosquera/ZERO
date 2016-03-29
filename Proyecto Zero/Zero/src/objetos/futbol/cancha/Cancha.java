@@ -5,7 +5,7 @@ import objetos.futbol.Jugador;
 import lejos.nxt.remote.NXTCommand; // importamos la conexón bluethoot
 import lejos.pc.comm.*; 
 
-class Cancha {
+public class Cancha {
 	//se está trabajando en milímetros
 	static final double largo=1830;
 	static final double ancho=1220;
