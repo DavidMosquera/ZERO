@@ -1,7 +1,7 @@
 package objetos.futbol.cancha;
 import java.lang.Math;//para poder usar seno y coseno
 import lejos.nxt.*;
-import objetos.futbol.Jugador;
+import objetos.futbol.jugadores.*;
 import lejos.nxt.remote.NXTCommand; // importamos la conexón bluethoot
 import lejos.pc.comm.*; 
 
