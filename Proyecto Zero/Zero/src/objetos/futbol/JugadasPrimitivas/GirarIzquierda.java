@@ -1,7 +1,7 @@
 package objetos.futbol.JugadasPrimitivas;
 import lejos.nxt.*;
 
-class GirarIzquierda extends jugadaPrimitiva {
+public class GirarIzquierda extends jugadaPrimitiva {
 	public GirarIzquierda (int potencia, String nombre){
 		this.potencia= potencia;
 		this.nombre=nombre;

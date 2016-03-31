@@ -3,7 +3,7 @@ import lejos.nxt.*;//no sabemos especificamente que vamos a importar pero en est
 import objetos.futbol.cancha.*; // IMPORTANTE: Despues de la propuesta de mañana del Menú, determinaremos donde poner 
 //y donde calcular la posición del jugador, por lo que veo será más sencillo despúes de plantear lo que tengo en mente.
 
-class Adelantar extends jugadaPrimitiva {
+public class Adelantar extends jugadaPrimitiva {
 	
 	public Adelantar(int potencia, String nombre){
 		this.potencia= potencia;
