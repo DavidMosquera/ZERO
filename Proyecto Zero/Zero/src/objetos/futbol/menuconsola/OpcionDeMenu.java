@@ -1,5 +1,5 @@
-package objetos.futbol.menuconsola;
+package objetos.futbol.menuconsola; //Super clase de tipo OPCION DE MENU ABSTRACTA
 
-public class OpcionDeMenu {
-
+abstract class OpcionDeMenu {
+	abstract public void ejecutar();
 }
