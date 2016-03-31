@@ -6,80 +6,94 @@ import lejos.nxt.remote.NXTCommand;
 import lejos.pc.comm.*; 
 public class MenuDeConsola {
 	private ArrayList<OpcionDeMenu> Opciones = new ArrayList<OpcionDeMenu>();
-	public void anadirOpcion(OpcionDeMenu r){
-		Opciones.add(r);
-	}
 	public void lanzarMenu(){
 		NXTConnector conn = new NXTConnector();
 		byte numero, memoria=-1;
-		Scanner Opc = new Scanner(System.in); // Para leer la opciÛn seleccionada
-		opcion_0 Num0 = new opcion_0();  // Conectar
-		opcion_1 Num1 = new opcion_1();  // Adelante
-		opcion_2 Num2 = new opcion_2();  // Retroceder
-		opcion_3 Num3 = new opcion_3();  // GiroIzquierda
-		opcion_4 Num4 = new opcion_4();  // GiroDerecha
-		opcion_5 Num5 = new opcion_5();  // Patear
-		opcion_6 Num6 = new opcion_6();  // Frenar
-		Opciones.add(Num0);
-		Opciones.add(Num1);
-		Opciones.add(Num2); 
-		Opciones.add(Num3); 
-		Opciones.add(Num4); 
-		Opciones.add(Num5); 
-		Opciones.add(Num6);
+		Scanner scanner = new Scanner(System.in); // Para leer la opci√≥n seleccionada
+		
+		Lista_opc(Opciones);//Agrega las opciones a la lista
+		
 		System.out.println("Conectado: "+ conn.connectTo());
 		NXTCommandConnector.setNXTCommand(new NXTCommand(conn.getNXTComm())); 
 		while(true){
+			String memoria ="0";
 			System.out.println("Opciones: "+"\n"+"(0) Conectar "+"\n"+"(1) Adelante "+ 
 					"\n"+"(2) Retroceder "+"\n"+"(3) Girar a la Izquierda "+"\n"+ 
 					"(4) Girar a la Derecha "+"\n"+"(5) Patear "+"\n"+"(6) Frenar"+"\n"+
 					"(7) Salir");
-			numero = Opc.nextByte();
-			if (memoria ==1){ //Ejecuta el mÈtodo parar de Adelantar
-				Num1.parar();
-			}
-			else if (memoria ==2){ //Ejecuta el mÈtodo parar de Retroceder
-				Num2.parar();
-			}
-			else if (memoria ==3){ //Ejecuta el mÈtodo parar de Girar Izquierda
-				Num3.parar();
-			}
-			else if (memoria ==4){ //Ejecuta el mÈtodo parar de Girar Derecha
-				Num4.parar();
-			}
-			else if (memoria ==5){ //Ejecuta el mÈtodo parar de Patear
-				Num5.parar();	
-			}
-			else{ //No realiza nada
-			}
-			if (numero==0){ // Condicional para identificar la opciÛn ingresada
+			String numero = scanner.next();//lo cambie para no confundirnos con opc o opcion
+			/*se usa un String para que no nos salte error i ingresamos un String por eroor, solo un 
+			aviso por consola*/
+			
+			detener_accion(memoria);
+			opcion(numero);
+			memoria=numero;
+			
+			
+			
+		}
+		private void opcion(String opc_numero){
+			if (opc_numero.compareTo("0")==0){ // Condicional para identificar la opci√≥n ingresada
 				Num0.ejecutar(); // Por el usuario
 			}
-			else if (numero ==1){ //Ejecuta opcion # 1 (adelante)
+			else if (opc_numero.compareTo("1")==0){ //Ejecuta opcion # 1 (adelante)
 				Num1.ejecutar();	
 			}
-			else if (numero ==2){ //Ejecuta opcion # 2 (retroceder)
+			else if (opc_numero.compareTo("2")==0){ //Ejecuta opcion # 2 (retroceder)
 				Num2.ejecutar();
 			}
-			else if (numero ==3){ //Ejecuta opcion # 3 (Girar Izquierda)
+			else if (opc_numero.compareTo("3")==0){ //Ejecuta opcion # 3 (Girar Izquierda)
 				Num3.ejecutar();
 			}
-			else if (numero ==4){ //Ejecuta opcion # 4 (Girar Derecha)
+			else if (opc_numero.compareTo("4")==0){ //Ejecuta opcion # 4 (Girar Derecha)
 				Num4.ejecutar();
 			}
-			else if (numero ==5){ //Ejecuta opcion # 5 (Patear)
+			else if (opc_numero.compareTo("5")==0){ //Ejecuta opcion # 5 (Patear)
 				Num5.ejecutar();
 			}
-			else if (numero ==6){ //Ejecuta opcion # 6 (Frenar)
+			else if (opc_numero.compareTo("6")==0){ //Ejecuta opcion # 6 (Frenar)
 				Num6.ejecutar();	
 			}
-			else if (numero ==7){ //Ejecuta opcion # 7 (Salir)
+			else if (opc_numero.compareTo("7")==0){ //Ejecuta opcion # 7 (Salir)
 				break;
 			}
 			else{
-				System.out.println("ERROR NUMERO INGRESADO NO V¡LIDO");
+				System.out.println("ERROR NUMERO INGRESADO NO V√ÅLIDO");
 			}
-			memoria = numero;	
-		}	
+			memoria = numero;
+		}
+		private void detener_accion (String m){
+			if (m.compareTo("1")==0)){          //Ejecuta el m√©todo parar de Adelantar
+				Opciones[1].parar();
+			}
+			else if (m.compareTo("2")==0)){    //Ejecuta el m√©todo parar de Retroceder
+				Opciones[2].parar();
+			}
+			else if (m.compareTo("3")==0)){   //Ejecutar el m√©todo parar de Girar Izquierda
+				Opciones[3].parar();
+			}
+			else if (m.compareTo("4")==0)){   //Ejecutar el m√©todo parar de Girar Derecha
+				Opciones[4].parar();
+			}
+			else if (m.compareTo("5")==0)){   //Ejetcua el m√©todo parar de Patear
+				Opciones[5].parar();
+			}
+			else{ // No se realiza nada
+				
+			}
+		}
+		private void Lista_opc(ArrayList<OpcionDeMenu> lista){
+			lista.add(new opcion_0());	//Conectar
+			lista.add(new opcion_1());	//Adelantar
+			lista.add(new opcion_2()); 	// Retroceder
+			lista.add(new opcion_3()); 	// GiroIzquierda
+			lista.add(new opcion_4()); 	// GiroDerecha
+			lista.add(new opcion_5());      // Patear
+			lista.add(new opcion_6());      // Frenar
+			lista.add(new opcion_7());	// Salir
+		}
+		public void anadirOpcion(OpcionDeMenu r){
+		Opciones.add(r);
+	        }
 	}
 }
