@@ -34,25 +34,25 @@ public class MenuDeConsola {
 		}
 		private void opcion(String opc_numero){
 			if (opc_numero.compareTo("0")==0){ // Condicional para identificar la opción ingresada
-				Num0.ejecutar(); // Por el usuario
+				Opciones[0].ejecutar(); // Por el usuario
 			}
 			else if (opc_numero.compareTo("1")==0){ //Ejecuta opcion # 1 (adelante)
-				Num1.ejecutar();	
+				Opciones[1].ejecutar(); 	
 			}
 			else if (opc_numero.compareTo("2")==0){ //Ejecuta opcion # 2 (retroceder)
-				Num2.ejecutar();
+				Opciones[2].ejecutar(); 
 			}
 			else if (opc_numero.compareTo("3")==0){ //Ejecuta opcion # 3 (Girar Izquierda)
-				Num3.ejecutar();
+				Opciones[3].ejecutar(); 
 			}
 			else if (opc_numero.compareTo("4")==0){ //Ejecuta opcion # 4 (Girar Derecha)
-				Num4.ejecutar();
+				Opciones[4].ejecutar(); 
 			}
 			else if (opc_numero.compareTo("5")==0){ //Ejecuta opcion # 5 (Patear)
-				Num5.ejecutar();
+				Opciones[5].ejecutar(); 
 			}
 			else if (opc_numero.compareTo("6")==0){ //Ejecuta opcion # 6 (Frenar)
-				Num6.ejecutar();	
+				Opciones[6].ejecutar(); 	
 			}
 			else if (opc_numero.compareTo("7")==0){ //Ejecuta opcion # 7 (Salir)
 				break;
