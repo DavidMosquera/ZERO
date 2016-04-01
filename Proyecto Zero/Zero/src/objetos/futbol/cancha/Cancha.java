@@ -10,12 +10,15 @@ public class Cancha {
 	static final double largo=1830;
 	static final double ancho=1220;
 	
-	static double Delta_taco; // Calculamos en cada cambio de jugada.
-	static double Memoria_taco; // Calculamos para allar el cambio actual del tacometro.
+	public static int Memoria_angulo; // Calculamos para allar el angulo actual.
+	public static int Angulo_actual; // Calculamos para las posiciones tanto en X como en Y.
+	public static double Delta_taco; // Calculamos en cada cambio de jugada.
+	public static double Memoria_taco; // Calculamos para allar el cambio actual del tacometro.
 	
-	private double PosicionRobot_x;
-	private double PosicionRobot_y;
-	private int DireccionRobot;//no se sabe si entero, double o String
+	public static double PosicionRobot_x; // Static?
+	public static double PosicionRobot_y;
+	public static int DireccionRobot;//no se sabe si entero, double o String
+	
 	private NXTConnector conex = new NXTConnector();
 	private final short Largo_llantas=0; // Necesitamos la medida entre las llantas de robot.
 	private final short Diametro_rueda=0; // Necesitamos la medida del diametro de una de las ruedas.
@@ -42,7 +45,7 @@ public class Cancha {
 		//Reinicia los valores de los atributos.
 	}
 	
-	public boolean calcularPosicionJugador(){
+	public static boolean calcularPosicionJugador(){
 		//acturalizar los atributos con las funciones calcular
 		//Vemos si es delantero o portero
 		//si se sale return false, de lo contrario true
@@ -51,7 +54,10 @@ public class Cancha {
 	}
 	public double calcular_x(){
 		//operaciones geométricas con coseno
-		double m=Diamentro_llanta*Math.PI*(Motor.A.getTachoCount()-Memoria_taco)
+		double m=Diamentro_llanta*Math.PI*(Motor.A.getTachoCount()-Memoria_taco);
+		return ((Math.cos(Memoria_angulo+Angulo_actual))*(m))+ PosicionRobot_x;
+		
+		
 		/*
 			m=DiametroLlantas*Pi*cambio_Tacometro
 			xf= ((cos(angulo))*(m)) +x0(posicoin anterior en x)
@@ -74,12 +80,6 @@ public class Cancha {
 		//(constante_angulo*cambio_Tacometro)- angulo0(angulo anterior)(es - si se gira a la derecha)
 		int dir=0;
 		return dir;
-	}
-	
-	public double Delta_tacometro(double Memoria){
-		
-		
-		
 	}
 	//set (no se si quitarlos)
 	public void setPosicionRobot_x(double Posicion_Robotx){
