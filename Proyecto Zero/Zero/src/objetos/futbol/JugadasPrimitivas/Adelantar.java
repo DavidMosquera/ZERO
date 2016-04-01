@@ -13,15 +13,14 @@ public class Adelantar extends jugadaPrimitiva {
 	}
 	public void ejecutar(){
 		Delta_Taco=Motor.A.getTachoCount();
-		Motor.A.forward();//izquierdo=A
-		Motor.B.forward();//derecho=B
+		Motor.A.forward();//Derecho=A
+		Motor.B.forward();//Izquierdo=B
 		
 		//los dos motores hacia adelante
 	}
 	public void parar(){
 		Motor.A.stop();
-		Motor.B.stop(); // D#16 No encontramos como calcular desde las jugadas primitivas la posición 
-		//X y Y en la cancha
+		Motor.B.stop(); //Metodo que detiene el movimiento del robot
 		
 	}
 	public static double Delta_PrimTaco(double a){
