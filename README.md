@@ -4,7 +4,7 @@
 - milímetros (mm)
 
 
-# Medidas importantes
+# Medidas importantes:
 - Diametro Llanta: 56 mm
 - Distancia entre Llantas:
 
