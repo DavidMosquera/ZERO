@@ -10,13 +10,16 @@ public class Cancha {
 	static final double largo=1830;
 	static final double ancho=1220;
 	
+	static double Delta_taco; // Calculamos en cada cambio de jugada.
+	static double Memoria_taco; // Calculamos para allar el cambio actual del tacometro.
 	
 	private double PosicionRobot_x;
 	private double PosicionRobot_y;
 	private int DireccionRobot;//no se sabe si entero, double o String
-	private NXTConnector conex = new NXTConnector(); 
-	private final double constante_angulo=0; //no es 0, hay que calvularla con la formula
-	/*((360*Diametros_ruedas)/Largo_llantas)*/
+	private NXTConnector conex = new NXTConnector();
+	private final short Largo_llantas=0; // Necesitamos la medida entre las llantas de robot.
+	private final short Diametro_rueda=0; // Necesitamos la medida del diametro de una de las ruedas.
+	private final double constante_angulo=((360*Diametro_rueda)/Largo_llantas) ; //Fórmula:((360*Diametros_ruedas)/Largo_llantas)*/
 	
 	
 	public Cancha(){
@@ -34,10 +37,12 @@ public class Cancha {
 		PosicionRobot_x=0;
 		PosicionRobot_y=0;
 		DireccionRobot=0;
+		Motor.A.resetTachoCount(); // Motor Derecho reinicia el tacómetro
+		Motor.B.resetTachoCount(); // Motor Izquierdo reinicia el tacómetro
 		//Reinicia los valores de los atributos.
 	}
 	
-	public boolean calcularPosicionJugador(){//no recibe parámetros
+	public boolean calcularPosicionJugador(){
 		//acturalizar los atributos con las funciones calcular
 		//Vemos si es delantero o portero
 		//si se sale return false, de lo contrario true
@@ -46,6 +51,7 @@ public class Cancha {
 	}
 	public double calcular_x(){
 		//operaciones geométricas con coseno
+		double m=Diamentro_llanta*Math.PI*(Motor.A.getTachoCount()-Memoria_taco)
 		/*
 			m=DiametroLlantas*Pi*cambio_Tacometro
 			xf= ((cos(angulo))*(m)) +x0(posicoin anterior en x)
@@ -69,6 +75,12 @@ public class Cancha {
 		int dir=0;
 		return dir;
 	}
+	
+	public double Delta_tacometro(double Memoria){
+		
+		
+		
+	}
 	//set (no se si quitarlos)
 	public void setPosicionRobot_x(double Posicion_Robotx){
 		this.PosicionRobot_x=Posicion_Robotx;
@@ -89,6 +101,7 @@ public class Cancha {
 	public int getDireccionRobot(){
 		return DireccionRobot;
 	}
+	
 	
 	
 }
