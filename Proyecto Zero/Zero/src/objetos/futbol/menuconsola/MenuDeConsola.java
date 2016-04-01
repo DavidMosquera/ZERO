@@ -5,32 +5,38 @@ import lejos.nxt.*;
 import lejos.nxt.remote.NXTCommand;
 import lejos.pc.comm.*; 
 public class MenuDeConsola {
+
+	//atributos:
 	private ArrayList<OpcionDeMenu> Opciones = new ArrayList<OpcionDeMenu>();
+	private String accion;
+	private byte memoria=-1;
+	private Lista_opc(Opciones);//Agrega las opciones a la lista
+	private boolean rol;
+	private Scanner scanner = new Scanner(System.in); // Para leer la opción seleccionada
+	
 	public void lanzarMenu(){
 		NXTConnector conn = new NXTConnector();
-		Scanner scanner = new Scanner(System.in); // Para leer la opción seleccionada
-		
-		//atributos:
-		byte numero, memoria=-1;
-		Lista_opc(Opciones);//Agrega las opciones a la lista
-		boolean rol;
-		
 		System.out.println("Conectado: "+ conn.connectTo());
 		NXTCommandConnector.setNXTCommand(new NXTCommand(conn.getNXTComm())); 
 		
 		//primero se le pregunta al usuario si es jugador o admin 
-		rol= admin_o_jugador();//false si es admin, true si es jugador
+		rol= admin_o_usuario();//false si es admin, true si es usuario
 		if(rol==true){
 			while(true){
 				String memoria ="0";
 				imprimir_opciones_jugador();//imprime el menú con las opciones de el jugador
-				String numero = scanner.next();//lo cambie para no confundirnos con opc o opcion
+				String acccion = scanner.next();//lo cambie para no confundirnos con opc o opcion
 				/*se usa un String para que no nos salte error i ingresamos un String por eroor, solo un 
 				aviso por consola*/
 				
 				detener_accion(memoria);
-				opcion(numero);
-				memoria=numero;
+				opcion(accion);
+				memoria=acccion;
+			}
+		}
+		else{
+			while(true){
+				//aquí van las opciones del administrador
 			}
 		}
 		private void opcion(String opc_numero){
@@ -61,7 +67,6 @@ public class MenuDeConsola {
 			else{
 				System.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
 			}
-			memoria = numero;
 		}
 		private void detener_accion (String m){
 			if (m.compareTo("1")==0)){          //Ejecuta el método parar de Adelantar
@@ -94,7 +99,7 @@ public class MenuDeConsola {
 			lista.add(new opcion_7());	// Salir
 		}
 		public void anadirOpcion(OpcionDeMenu r){
-		Opciones.add(r);
+			Opciones.add(r);
 	        }
 	        //imprime las opciones del jugador 
 	        private void imprimir_opciones_jugador(){
@@ -104,9 +109,9 @@ public class MenuDeConsola {
 				"(7) Salir");
 	        }
 	        //este metodo imprime el menú de bienvenida y pregunta el rol
-	        private boolean admin_o_jugador(){
+	        private boolean admin_o_usuarior(){
 	        	while(true){
-	        		System.out.println("Bienvenido, porfavor ejila su rol:"+"/n"+"(1) Jugador"+"(2) Administrador");
+	        		System.out.println("Bienvenido, porfavor ejila su rol:"+"/n"+"(1) Usuario"+"(2) Administrador");
 	        		numero= scanner.next();
 	        		if(numero.compareTo("1")=0){
 	        			return true;
