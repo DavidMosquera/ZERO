@@ -17,6 +17,8 @@ public class MenuDeConsola {
 	private Lista_opc(Opciones);//Agrega las opciones a la lista
 	private boolean rol;
 	private Scanner scanner = new Scanner(System.in); // Para leer la opción seleccionada
+	private Delantero delantero;
+	private Arquero arquero;
 	
 	public void lanzarMenu(){
 		
@@ -29,6 +31,9 @@ public class MenuDeConsola {
 			System.out.println("Conectado: "+ conn.connectTo());
 			NXTCommandConnector.setNXTCommand(new NXTCommand(conn.getNXTComm())); 
 			
+			//elegir los jugadores
+			elegir_arquero();
+			elegir_delantero();
 			while(true){
 				String memoria ="0";
 				imprimir_opciones_jugador();//imprime el menú con las opciones de el jugador
@@ -132,6 +137,53 @@ public class MenuDeConsola {
         		}
         	}
         }
-        private
+        //muestra las opciones de delantero y ejile el que el jugador indicó
+        private void elegir_delantero(){
+        	int contador=0;
+        	boolean comparar_accion=true;
+        	System.out.println("Elije tu delantero:");
+        	while(comparar_accion){
+        		for(int i =0;i<delanteros.size();i++){
+        			System.out.println("("+(i+1)+")"+" "+delanteros.get(i).getNombre());
+        		}
+        		accion = next.Int();
+        		for(int i=0;i<delantero.size();i++){
+        			contador=i+1;
+        			if(accion.compareTo(String.valueOf(contador))==0){
+        				this.delantero= delanteros.get(i);
+        				comparar_accion=false;
+        			}
+        		}
+        		if(comparar_accion==true){
+        			Syste.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
+        		}
+        
+        	}
+        	
+        }
+        //muestra las opciones de arqueros y asigna el que ususario a indicado
+        private void elegir_arquero(){
+        	int contador=0;
+        	boolean comparar_accion=true;
+        	System.out.println("Elije tu arquero:");
+        	while(comparar_accion){
+        		for(int i =0;i<arqueros.size();i++){
+        			System.out.println("("+(i+1)+")"+" "+arqueros.get(i).getNombre());
+        		}
+        		accion = next.Int();
+        		for(int i=0;i<arqueros.size();i++){
+        			contador=i+1;
+        			if(accion.compareTo(String.valueOf(contador))==0){
+        				this.arquero= arqueros.get(i);
+        				comparar_accion=false;
+        			}
+        		}
+        		if(comparar_accion==true){
+        			Syste.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
+        		}
+        
+        	}
+        	
+        }
 }
 
