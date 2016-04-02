@@ -1,6 +1,6 @@
 package objetos.futbol.jugadores;
-//EDITABLE, AUN NO SABEMOS DONDE EST¡N LOS MOTORES DEL ROBOT.
-class Arquero extends Futbolista {
+//EDITABLE, AUN NO SABEMOS DONDE EST√ÅN LOS MOTORES DEL ROBOT.
+public class Arquero extends Futbolista {
 	private int TiempoSinGoles;
 	private byte dorsal;
 	public Arquero(String nombre, String posicion, JugadaCompleja[] listaJugadas, 
