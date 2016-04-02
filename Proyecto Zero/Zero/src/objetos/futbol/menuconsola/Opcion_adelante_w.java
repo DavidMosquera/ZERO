@@ -3,14 +3,14 @@ package objetos.futbol.menuconsola;
 import objetos.futbol.JugadasPrimitivas.Adelantar;
 
 //adelante
-public class Opcion_adelante_w extends OpcionDeMenu {
+class Opcion_adelante_w extends OpcionDeMenu {
 	private Adelantar Adelanto = new Adelantar(1080, "Adelantar");
 
-	public void ejecutar() {
+	void ejecutar() {
 		Adelanto.ejecutar();
 	}
 
-	public void parar() {
+	void parar() {
 		Adelanto.parar();
 	}
 }
