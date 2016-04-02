@@ -1,5 +1,6 @@
 package objetos.futbol.JugadasPrimitivas;
 import lejos.nxt.*;
+import lejos.util.Delay; 
 
 public class Patear extends jugadaPrimitiva {
 	public Patear (int potencia, String nombre){
@@ -7,15 +8,18 @@ public class Patear extends jugadaPrimitiva {
 		this.nombre=nombre;
 		Motor.C.setSpeed(potencia);
 	}
-	public void ejecutar(){
+	public void ejecutar(){ // Ejecuta Patear, se devuelve en 1 segundo.
+		Motor.C.backward();
+		Delay.msDelay(1000);
 		Motor.C.forward();
-		// D#14 Delay?
-		/*podría ser un while con un condicional de temporizador donde pregunte
-		si se ingresa algo por teclado para parar el motor :) */
-		//avanza chuta y sa devuelva a la posicion inicial		
+		Delay.msDelay(1000);
+		Motor.C.stop();
 	}
 	public void parar(){
+		Motor.C.forward();
+		Delay.msDelay(1000);
 		Motor.C.stop();
+		
 		/*se puede detener en cualquier momento y se debe devovlver 
 		a el punto inicial*/
 		
