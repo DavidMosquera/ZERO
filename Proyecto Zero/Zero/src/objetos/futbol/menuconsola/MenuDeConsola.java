@@ -10,21 +10,19 @@ public class MenuDeConsola {
 
 	//atributos:
 	private ArrayList<OpcionDeMenu> Opciones = new ArrayList<OpcionDeMenu>();
-	private Arraylist<Arquero> lista_arqueros = new ArrayList<Arquero>;
-	private Arraylist<Delantero> lista_delanteros = new ArrayList<Delantero>;
+	private ArrayList<Arquero> lista_arqueros = new ArrayList<Arquero>();
+	private ArrayList<Delantero> lista_delanteros = new ArrayList<Delantero>();
 	private String accion;
 	private byte memoria=-1;
-	private Lista_opc(Opciones);//Agrega las opciones a la lista
+   
 	private boolean rol;
 	private Scanner scanner = new Scanner(System.in); // Para leer la opción seleccionada
 	private Delantero delantero;
 	private Arquero arquero;
 	
 	public void lanzarMenu(){
-		
 		//primero se le pregunta al usuario si es jugador o admin 
 		rol= admin_o_usuario();//false si es admin, true si es usuario
-		
 		if(rol==true){
 			//se cambia la ubicación para que solo el usuario se conecte al robot 
 			NXTConnector conn = new NXTConnector();
@@ -76,26 +74,25 @@ public class MenuDeConsola {
 			Opciones.get(6).ejecutar(); 	
 		}
 		else if (opc_numero.compareTo("t")==0){ //Ejecuta opcion t (Salir)
-			break;
 		}
 		else{
 			System.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
 		}
 	}
 	private void detener_accion (String m){
-		if (m.compareTo("w")==0)){          //Ejecuta el método parar de Adelantar
+		if (m.compareTo("w")==0){          //Ejecuta el método parar de Adelantar
 			Opciones.get(1).parar();
 		}
-		else if (m.compareTo("s")==0)){    //Ejecuta el método parar de Retroceder
+		else if (m.compareTo("s")==0){    //Ejecuta el método parar de Retroceder
 			Opciones.get(2).parar();
 		}
-		else if (m.compareTo("a")==0)){   //Ejecutar el método parar de Girar Izquierda
+		else if (m.compareTo("a")==0){   //Ejecutar el método parar de Girar Izquierda
 			Opciones.get(3).parar();
 		}
-		else if (m.compareTo("d")==0)){   //Ejecutar el método parar de Girar Derecha
+		else if (m.compareTo("d")==0){   //Ejecutar el método parar de Girar Derecha
 			Opciones.get(4).parar();
 		}
-		else if (m.compareTo("q")==0)){   //Ejetcua el método parar de Patear
+		else if (m.compareTo("q")==0){   //Ejetcua el método parar de Patear
 			Opciones.get(5).parar();
 		}
 		else{ // No se realiza nada
@@ -103,13 +100,13 @@ public class MenuDeConsola {
 		}
 	}
 	private void Lista_opc(ArrayList<OpcionDeMenu> lista){
-		lista.add(new opcion_0());			//Conectar
-		lista.add(new Opcion_adelante_w());		//Adelantar
-		lista.add(new Opcion_atras_s()); 		// Retroceder
+		                                            //Conectar
+		lista.add(new Opcion_adelante_w());		    //Adelantar
+		lista.add(new Opcion_atras_s()); 		    // Retroceder
 		lista.add(new Opcion_girar_izquierda_a()); 	// GiroIzquierda
 		lista.add(new Opcion_girar_derecha_d()); 	// GiroDerecha
 		lista.add(new Opcion_patear_q());      		// Patear
-		lista.add(new Opncion_parar_e());      		// Frenar	
+		lista.add(new Opcion_parar_e());      		// Frenar	
 	}
 	public void anadirOpcion(OpcionDeMenu r){
 		Opciones.add(r);
@@ -122,10 +119,10 @@ public class MenuDeConsola {
 			"(7) Salir");
 	}
 	//este metodo imprime el menú de bienvenida y pregunta el rol
-	private boolean admin_o_usuarior(){
+	private boolean admin_o_usuario(){
 	       	while(true){
 	       		System.out.println("Bienvenido, porfavor ejila su rol:"+"/n"+"(1) Usuario"+"(2) Administrador");
-	       		numero= scanner.next();
+	       		String numero= scanner.next();
 	        	if(numero.compareTo("1")==0){
 	        		return true;
 	    		}
@@ -133,7 +130,7 @@ public class MenuDeConsola {
 	        		return false;
 	        			}
         		else{
-        			System.out.printl("ERROR NUMERO INGRESADO NO VÁLIDO");
+        			System.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
         		}
         	}
         }
@@ -143,14 +140,14 @@ public class MenuDeConsola {
         	boolean comparar_accion=true;
         	System.out.println("Elije tu delantero:");
         	while(comparar_accion){
-        		for(int i =0;i<delanteros.size();i++){
-        			System.out.println("("+(i+1)+")"+" "+delanteros.get(i).getNombre());
+        		for(int i =0;i<lista_delanteros.size();i++){
+        			System.out.println("("+(i+1)+")"+" "+lista_delanteros.get(i).getNombre());
         		}
-        		accion = next.Int();
-        		for(int i=0;i<delantero.size();i++){
+        		String accion = scanner.next();
+        		for(int i=0;i<lista_delanteros.size();i++){
         			contador=i+1;
         			if(accion.compareTo(String.valueOf(contador))==0){
-        				this.delantero= delanteros.get(i);
+        				this.delantero=lista_delanteros.get(i);
         				comparar_accion=false;
         			}
         		}
@@ -167,14 +164,14 @@ public class MenuDeConsola {
         	boolean comparar_accion=true;
         	System.out.println("Elije tu arquero:");
         	while(comparar_accion){
-        		for(int i =0;i<arqueros.size();i++){
-        			System.out.println("("+(i+1)+")"+" "+arqueros.get(i).getNombre());
+        		for(int i =0;i<lista_arqueros.size();i++){
+        			System.out.println("("+(i+1)+")"+" "+lista_arqueros.get(i).getNombre());
         		}
-        		accion = next.Int();
-        		for(int i=0;i<arqueros.size();i++){
+        		String accion = scanner.next();
+        		for(int i=0;i<lista_arqueros.size();i++){
         			contador=i+1;
         			if(accion.compareTo(String.valueOf(contador))==0){
-        				this.arquero= arqueros.get(i);
+        				this.arquero= lista_arqueros.get(i);
         				comparar_accion=false;
         			}
         		}
