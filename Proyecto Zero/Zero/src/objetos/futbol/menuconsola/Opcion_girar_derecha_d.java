@@ -3,14 +3,14 @@ package objetos.futbol.menuconsola;
 import objetos.futbol.JugadasPrimitivas.GirarDerecha;
 
 //girar derecha
-public class Opcion_girar_derecha_d extends OpcionDeMenu {
+class Opcion_girar_derecha_d extends OpcionDeMenu {
 	private GirarDerecha Giros_Derecha = new GirarDerecha(1080, "Girar a la Derecha");
 
-	public void ejecutar() {
+	void ejecutar() {
 		Giros_Derecha.ejecutar();
 	}
 
-	public void parar() {
+	void parar() {
 		Giros_Derecha.parar();
 	}
 }
