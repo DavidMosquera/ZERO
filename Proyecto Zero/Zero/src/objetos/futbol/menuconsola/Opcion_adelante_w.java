@@ -4,7 +4,7 @@ import objetos.futbol.JugadasPrimitivas.Adelantar;
 
 //adelante
 public class Opcion_adelante_w extends OpcionDeMenu {
-	private Adelantar J = new Adelantar(1080, "Adelantar");
+	private Adelantar Adelanto = new Adelantar(1080, "Adelantar");
 
 	public void ejecutar() {
 		J.ejecutar();
