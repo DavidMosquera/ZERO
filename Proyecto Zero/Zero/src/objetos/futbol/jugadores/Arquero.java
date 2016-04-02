@@ -1,9 +1,12 @@
 package objetos.futbol.jugadores;
+
+import java.util.ArrayList;
+
 //EDITABLE, AUN NO SABEMOS DONDE ESTÁN LOS MOTORES DEL ROBOT.
 public class Arquero extends Futbolista {
 	private int TiempoSinGoles;
 	private byte dorsal;
-	public Arquero(String nombre, String posicion, JugadaCompleja[] listaJugadas, 
+	public Arquero(String nombre, String posicion, ArrayList<JugadaCompleja> listaJugadas, 
 			 int TiempoSinGoles, byte dorsal){
 		super(nombre,posicion,listaJugadas); //Invocamos al constructor de la superclase
 		this.TiempoSinGoles=TiempoSinGoles;
