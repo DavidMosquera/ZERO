@@ -6,23 +6,24 @@ import lejos.pc.comm.*;
 
 public class Cancha {
 	//se está trabajando en milímetros
-	static final double largo=1830;
-	static final double ancho=1220;
+	static final int largo=1830;
+	static final int ancho=1220;
 	public static String Grafico[][] = new String [13][19]; //Cancha que muestra la posicion del robot.
 	
-	public static int Memoria_angulo; // Calculamos para allar el angulo actual.
-	public static int Angulo_actual; // Calculamos para las posiciones tanto en X como en Y.
-	public static double Delta_taco; // Calculamos en cada cambio de jugada.
-	public static double Memoria_taco; // Calculamos para allar el cambio actual del tacometro.
+	public static double Memoria_angulo; // Calculamos para allar el angulo actual.
+	public static double Angulo_actual; // Calculamos para las posiciones tanto en X como en Y.
+	public static int Delta_taco; // Calculamos en cada cambio de jugada.
+	public static int Memoria_taco; // Calculamos para allar el cambio actual del tacometro.
 	
+	public static boolean Fuera_de_posicion=false;
 	public static double PosicionRobot_x; // Static?
 	public static double PosicionRobot_y;
 	public static int DireccionRobot;//no se sabe si entero, double o String
 	
 	private NXTConnector conex = new NXTConnector();
-	private final short Largo_llantas=135; // Medida entre las llantas, tomada por los extremos.
-	private static final short Diametro_rueda=56; // Diametro de la rueda.
-	private final double constante_angulo=((360*Diametro_rueda)/Largo_llantas) ; //Formula:((360*Diametros_ruedas)/Largo_llantas)*/
+	private static short Largo_llantas=135; // Medida entre las llantas, tomada por los extremos.
+	private static short Diametro_rueda=56; // Diametro de la rueda.
+	private static int constante_angulo=((360*Diametro_rueda)/Largo_llantas) ; //Formula:((360*Diametros_ruedas)/Largo_llantas)*/
 	
 	
 	public Cancha(){
@@ -33,6 +34,9 @@ public class Cancha {
 		PosicionRobot_x=0;
 		PosicionRobot_y=0;
 		DireccionRobot=0;
+		Memoria_taco=0;
+		Memoria_angulo=0;
+		
 		//Resetea los tacÃ³metros, pone los valores en 0. (Constructor)
 	}
 	
@@ -70,13 +74,13 @@ public class Cancha {
 			yf= ((sen(angulo))*(m)) +x0(posicoin anterior en y)
 		*/
 	}
-	public double calcular_dir_derecha(){
+	public static double calcular_dir_derecha(){
 		//fórmulas
 		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)-Memoria_angulo);
 		//(constante_angulo*cambio_Tacometro)+ angulo0(angulo anterior)(es + si se gira a la izquierdo)
 		
 	}
-	public double calcular_dir_izquierda(){
+	public static double calcular_dir_izquierda(){
 		//fórmulas
 		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)+Memoria_angulo);
 		//(constante_angulo*cambio_Tacometro)- angulo0(angulo anterior)(es - si se gira a la derecha)
