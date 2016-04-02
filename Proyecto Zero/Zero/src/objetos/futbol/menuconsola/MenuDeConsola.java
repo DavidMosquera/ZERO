@@ -52,29 +52,30 @@ public class MenuDeConsola {
 			}
 		}
 	}
+	//no se si la opcion 7 es suficiente para salir
 	private void opcion(String opc_numero){
 		if (opc_numero.compareTo("0")==0){ // Condicional para identificar la opción ingresada
 			Opciones.get(0).ejecutar(); // Por el usuario
 		}
-		else if (opc_numero.compareTo("1")==0){ //Ejecuta opcion # 1 (adelante)
+		else if (opc_numero.compareTo("w")==0){ //Ejecuta opcion w (adelante)
 			Opciones.get(1).ejecutar(); 	
 		}
-		else if (opc_numero.compareTo("2")==0){ //Ejecuta opcion # 2 (retroceder)
+		else if (opc_numero.compareTo("s")==0){ //Ejecuta opcion s (retroceder)
 			Opciones.get(2).ejecutar(); 
 		}
-		else if (opc_numero.compareTo("3")==0){ //Ejecuta opcion # 3 (Girar Izquierda)
+		else if (opc_numero.compareTo("a")==0){ //Ejecuta opcion d (Girar Izquierda)
 			Opciones.get(3).ejecutar(); 
 		}
-		else if (opc_numero.compareTo("4")==0){ //Ejecuta opcion # 4 (Girar Derecha)
+		else if (opc_numero.compareTo("d")==0){ //Ejecuta opcion a (Girar Derecha)
 			Opciones.get(4).ejecutar(); 
 		}
-		else if (opc_numero.compareTo("5")==0){ //Ejecuta opcion # 5 (Patear)
+		else if (opc_numero.compareTo("q")==0){ //Ejecuta opcion q (Patear)
 			Opciones.get(5).ejecutar(); 
 		}
-		else if (opc_numero.compareTo("6")==0){ //Ejecuta opcion # 6 (Frenar)
+		else if (opc_numero.compareTo("e")==0){ //Ejecuta opcion e (Frenar)
 			Opciones.get(6).ejecutar(); 	
 		}
-		else if (opc_numero.compareTo("7")==0){ //Ejecuta opcion # 7 (Salir)
+		else if (opc_numero.compareTo("t")==0){ //Ejecuta opcion t (Salir)
 			break;
 		}
 		else{
@@ -82,19 +83,19 @@ public class MenuDeConsola {
 		}
 	}
 	private void detener_accion (String m){
-		if (m.compareTo("1")==0)){          //Ejecuta el método parar de Adelantar
+		if (m.compareTo("w")==0)){          //Ejecuta el método parar de Adelantar
 			Opciones.get(1).parar();
 		}
-		else if (m.compareTo("2")==0)){    //Ejecuta el método parar de Retroceder
+		else if (m.compareTo("s")==0)){    //Ejecuta el método parar de Retroceder
 			Opciones.get(2).parar();
 		}
-		else if (m.compareTo("3")==0)){   //Ejecutar el método parar de Girar Izquierda
+		else if (m.compareTo("a")==0)){   //Ejecutar el método parar de Girar Izquierda
 			Opciones.get(3).parar();
 		}
-		else if (m.compareTo("4")==0)){   //Ejecutar el método parar de Girar Derecha
+		else if (m.compareTo("d")==0)){   //Ejecutar el método parar de Girar Derecha
 			Opciones.get(4).parar();
 		}
-		else if (m.compareTo("5")==0)){   //Ejetcua el método parar de Patear
+		else if (m.compareTo("q")==0)){   //Ejetcua el método parar de Patear
 			Opciones.get(5).parar();
 		}
 		else{ // No se realiza nada
@@ -102,14 +103,13 @@ public class MenuDeConsola {
 		}
 	}
 	private void Lista_opc(ArrayList<OpcionDeMenu> lista){
-		lista.add(new opcion_0());	//Conectar
-		lista.add(new opcion_1());	//Adelantar
-		lista.add(new opcion_2()); 	// Retroceder
-		lista.add(new opcion_3()); 	// GiroIzquierda
-		lista.add(new opcion_4()); 	// GiroDerecha
-		lista.add(new opcion_5());      // Patear
-		lista.add(new opcion_6());      // Frenar
-		lista.add(new opcion_7());	// Salir
+		lista.add(new opcion_0());			//Conectar
+		lista.add(new Opcion_adelante_w());		//Adelantar
+		lista.add(new Opcion_atras_s()); 		// Retroceder
+		lista.add(new Opcion_girar_izquierda_a()); 	// GiroIzquierda
+		lista.add(new Opcion_girar_derecha_d()); 	// GiroDerecha
+		lista.add(new Opcion_patear_q());      		// Patear
+		lista.add(new Opncion_parar_e());      		// Frenar	
 	}
 	public void anadirOpcion(OpcionDeMenu r){
 		Opciones.add(r);
