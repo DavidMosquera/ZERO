@@ -7,10 +7,10 @@ public class Opcion_girar_derecha_d extends OpcionDeMenu {
 	private GirarDerecha Giros_Derecha = new GirarDerecha(1080, "Girar a la Derecha");
 
 	public void ejecutar() {
-		J.ejecutar();
+		Giros_Derecha.ejecutar();
 	}
 
 	public void parar() {
-		J.parar();
+		Giros_Derecha.parar();
 	}
 }

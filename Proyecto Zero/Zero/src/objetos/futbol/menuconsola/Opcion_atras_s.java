@@ -7,10 +7,10 @@ public class Opcion_atras_s extends OpcionDeMenu {
 	private Retroceder Retrocede = new Retroceder(1080, "Retroceder");
 
 	public void ejecutar() {
-		J.ejecutar();
+		Retrocede.ejecutar();
 	}
 
 	public void parar() {
-		J.parar();
+		Retrocede.parar();
 	}
 }

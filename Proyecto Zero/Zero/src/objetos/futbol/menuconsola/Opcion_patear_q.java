@@ -7,11 +7,11 @@ public class Opcion_patear_q extends OpcionDeMenu {
 	private Patear Pateo = new Patear(1080, "Patear");
 
 	public void ejecutar() {
-		J.ejecutar();
+		Pateo.ejecutar();
 	}
 
 	public void parar() {
-		J.parar();
+		Pateo.parar();
 	}
 
 }
