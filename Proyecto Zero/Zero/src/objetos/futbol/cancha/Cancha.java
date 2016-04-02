@@ -8,7 +8,13 @@ public class Cancha {
 	//se está trabajando en milímetros
 	static final int largo=1830;
 	static final int ancho=1220;
-	public static String Grafico[][] = new String [13][19]; //Cancha que muestra la posicion del robot.
+	
+	private static String Grafico[][] = new String [13][19]; //Cancha que muestra la posicion del robot.
+	static String Memoria_Grafico=" ";
+	static int Memoria_XGrafico=0;
+	static int Memoria_YGrafico=0;
+	static int X;
+	static int Y;
 	
 	public static double Memoria_angulo; // Calculamos para allar el angulo actual.
 	public static double Angulo_actual; // Calculamos para las posiciones tanto en X como en Y.
@@ -31,11 +37,7 @@ public class Cancha {
 		Motor.A.resetTachoCount();
 		Motor.B.resetTachoCount();
 		Motor.C.resetTachoCount();
-		PosicionRobot_x=0;
-		PosicionRobot_y=0;
-		DireccionRobot=0;
-		Memoria_taco=0;
-		Memoria_angulo=0;
+		
 		
 		//Resetea los tacÃ³metros, pone los valores en 0. (Constructor)
 	}
@@ -44,6 +46,8 @@ public class Cancha {
 		PosicionRobot_x=0;
 		PosicionRobot_y=0;
 		DireccionRobot=0;
+		Memoria_taco=0;
+		Memoria_angulo=0;
 		Motor.A.resetTachoCount(); // Motor Derecho reinicia el tacÃ³metro
 		Motor.B.resetTachoCount(); // Motor Izquierdo reinicia el tacÃ³metro
 		//Reinicia los valores de los atributos.
@@ -110,8 +114,37 @@ public class Cancha {
 		}
 		return r;
 	}
-	public static void Localizacion_Robot(){
-		
+	public static void Localizacion_Robot(){ //Metodo para cambiar la localizacion del robot
+	    String n;                           // Utilizamos varios Condicionales y variables auxiliares,
+	    Memoria_XGrafico=X;                //  parar ir remplazando entre valores de la matriz de Strings
+		Memoria_YGrafico=Y;
+		Grafico[Memoria_XGrafico][Memoria_YGrafico]=Memoria_Grafico;
+		X=(int)Math.floor(PosicionRobot_x/100);
+		Y=(int)Math.floor(PosicionRobot_y/100);
+		Memoria_Grafico=Grafico[X][Y];
+		if (Angulo_actual>=0){
+			n = String.valueOf(Math.floor(Angulo_actual));
+			if((Math.floor(Angulo_actual)/100)<=0.09){
+				n="00"+n;
+			}
+			else if((Math.floor(Angulo_actual)/100)<=0.9){
+				n="0"+n;	
+			}
+			else{
+			}
+		}
+		else{
+			n= String.valueOf(Math.floor(360+Angulo_actual));
+			if((Math.floor(Math.floor(360+Angulo_actual))<=0.01)){
+				n="00"+n;
+			}
+			else if((Math.floor(360+Angulo_actual)/100)<=0.9){
+				n="0"+n;	
+			}
+			else{
+			}
+		}
+		Grafico[Y][X]=n;
 	}
 	public double getPosicionRobot_x(){
 		return PosicionRobot_x;
