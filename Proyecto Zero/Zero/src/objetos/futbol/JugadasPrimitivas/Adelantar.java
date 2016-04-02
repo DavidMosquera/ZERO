@@ -20,6 +20,7 @@ public class Adelantar extends jugadaPrimitiva {
 	public void parar(){
 		Cancha.Delta_taco=Motor.A.getTachoCount()-Cancha.Memoria_taco;
 		Cancha.Fuera_de_posicion=Cancha.calcularPosicionJugador();
+		Cancha.Localizacion_Robot();
 		Motor.A.stop();
 		Motor.B.stop(); //Metodo que detiene el movimiento del robot
 		
