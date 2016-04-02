@@ -4,7 +4,7 @@ import objetos.futbol.JugadasPrimitivas.Retroceder;
 
 //atras
 public class Opcion_atras_s extends OpcionDeMenu {
-	private Retroceder J = new Retroceder(1080, "Retroceder");
+	private Retroceder Retrocede = new Retroceder(1080, "Retroceder");
 
 	public void ejecutar() {
 		J.ejecutar();
