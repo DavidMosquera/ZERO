@@ -3,14 +3,14 @@ package objetos.futbol.menuconsola;
 import objetos.futbol.JugadasPrimitivas.Patear;
 
 //Patear
-public class Opcion_patear_q extends OpcionDeMenu {
+class Opcion_patear_q extends OpcionDeMenu {
 	private Patear Pateo = new Patear(1080, "Patear");
 
-	public void ejecutar() {
+	void ejecutar() {
 		Pateo.ejecutar();
 	}
 
-	public void parar() {
+	void parar() {
 		Pateo.parar();
 	}
 
