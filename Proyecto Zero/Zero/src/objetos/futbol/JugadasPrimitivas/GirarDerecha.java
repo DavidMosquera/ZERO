@@ -18,6 +18,7 @@ public class GirarDerecha extends jugadaPrimitiva {
 	}
 	public void parar(){
 		Cancha.Angulo_actual=Cancha.calcular_dir_derecha();
+		Cancha.Localizacion_Robot();
 		Motor.A.stop();
 		Motor.B.stop();
 		//Para los motores
