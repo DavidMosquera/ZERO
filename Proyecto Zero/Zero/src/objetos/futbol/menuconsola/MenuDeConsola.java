@@ -21,11 +21,11 @@ public class MenuDeConsola {
 	private Arquero arquero;
 	
 	public MenuDeConsola() throws FileNotFoundException {
-		
+		// Constructor necesario para poder asignar a Archivo el documento "Jugadas.txt"
 	} 
-	File Jugadas = new File ("Jugadas.txt");
-	FileOutputStream Archivo = new FileOutputStream(Jugadas);
-	PrintStream doc = new PrintStream(Archivo);
+	File Jugadas = new File ("Jugadas.txt"); //Aca es donde le asignamos a el atributo Jugadas que se vincule con el documento
+	FileOutputStream Archivo = new FileOutputStream(Jugadas); //Se crea el objeto que que nos relaciona el documento con el objeto que escribira sobre el
+	PrintStream Escritor = new PrintStream(Archivo); //Este sera el objeto que empezara a escribir la informacion en el documento.
 	
 	
 	public void lanzarMenu(){
