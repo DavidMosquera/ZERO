@@ -20,6 +20,14 @@ public class MenuDeConsola {
 	private Delantero delantero;
 	private Arquero arquero;
 	
+	public MenuDeConsola() throws FileNotFoundException {
+		
+	} 
+	File Jugadas = new File ("Jugadas.txt");
+	FileOutputStream Archivo = new FileOutputStream(Jugadas);
+	PrintStream doc = new PrintStream(Archivo);
+	
+	
 	public void lanzarMenu(){
 		//primero se le pregunta al usuario si es jugador o admin 
 		rol= admin_o_usuario();//false si es admin, true si es usuario
