@@ -1,4 +1,7 @@
 package objetos.futbol.jugadores;
+
+import java.util.ArrayList;
+
 //IMPORTANTE:
 //EDITABLE, AUN NO SABEMOS DONDE ESTÁN LOS MOTORES DEL ROBOT.
 //TODAS LAS MEDIDAS SE ENCUENTRAN EN mm (milímetros)
@@ -7,10 +10,10 @@ public class Futbolista {
 	// otros métodos. D#11
 	private String nombre;
 	private final String posicion;
-	public JugadaCompleja[] listaJugadas;
-	public static JugadaCompleja[] listaTotalJugadas; //lista de todas las jugadas complejas
+	public ArrayList<JugadaCompleja> listaJugadas;
+	public static ArrayList<JugadaCompleja> listaTotalJugadas; //lista de todas las jugadas complejas
 	
-	public Futbolista(String nombre, String posicion, JugadaCompleja[] listaJugadas){
+	public Futbolista(String nombre, String posicion, ArrayList<JugadaCompleja> listaJugadas){
 		this.nombre=nombre;
 		this.posicion=posicion;
 		this.listaJugadas=listaJugadas;// ¿Podemos poner directamente la lista o 
