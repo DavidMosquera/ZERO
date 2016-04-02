@@ -126,10 +126,10 @@ public class MenuDeConsola {
 	       	while(true){
 	       		System.out.println("Bienvenido, porfavor ejila su rol:"+"/n"+"(1) Usuario"+"(2) Administrador");
 	       		numero= scanner.next();
-	        	if(numero.compareTo("1")=0){
+	        	if(numero.compareTo("1")==0){
 	        		return true;
 	    		}
-	        	else if(numero.compareTo("2")=0){
+	        	else if(numero.compareTo("2")==0){
 	        		return false;
 	        			}
         		else{
@@ -155,7 +155,7 @@ public class MenuDeConsola {
         			}
         		}
         		if(comparar_accion==true){
-        			Syste.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
+        			System.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
         		}
         
         	}
@@ -179,7 +179,7 @@ public class MenuDeConsola {
         			}
         		}
         		if(comparar_accion==true){
-        			Syste.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
+        			System.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
         		}
         
         	}
