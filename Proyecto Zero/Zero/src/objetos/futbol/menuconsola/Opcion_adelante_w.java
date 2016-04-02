@@ -7,10 +7,10 @@ public class Opcion_adelante_w extends OpcionDeMenu {
 	private Adelantar Adelanto = new Adelantar(1080, "Adelantar");
 
 	public void ejecutar() {
-		J.ejecutar();
+		Adelanto.ejecutar();
 	}
 
 	public void parar() {
-		J.parar();
+		Adelanto.parar();
 	}
 }
