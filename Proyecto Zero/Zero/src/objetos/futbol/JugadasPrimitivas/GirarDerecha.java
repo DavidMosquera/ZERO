@@ -1,5 +1,6 @@
 package objetos.futbol.JugadasPrimitivas;
-import lejos.nxt.*; //Mirar descripción en Adelantar
+import lejos.nxt.*; //Mirar descripciÃ³n en Adelantar
+import objetos.futbol.cancha.*;
 
 public class GirarDerecha extends jugadaPrimitiva {
 	public GirarDerecha (int potencia, String nombre){
@@ -9,11 +10,14 @@ public class GirarDerecha extends jugadaPrimitiva {
 		Motor.B.setSpeed(potencia);
 	}
 	public void ejecutar(){
-		Motor.A.forward();//izquierdo
-		Motor.B.backward();//derecho
-		//motorA hacia adelante y motorB hacia atrás
+		Cancha.Memoria_taco=Motor.A.getTachoCount();
+		Cancha.Memoria_angulo=Cancha.Angulo_actual;
+		Motor.A.backward();//Derecho
+		Motor.B.forward();//Izquierdo
+		//motorA hacia adelante y motorB hacia atrÃ¡s
 	}
 	public void parar(){
+		Cancha.Angulo_actual=Cancha.calcular_dir_derecha();
 		Motor.A.stop();
 		Motor.B.stop();
 		//Para los motores
