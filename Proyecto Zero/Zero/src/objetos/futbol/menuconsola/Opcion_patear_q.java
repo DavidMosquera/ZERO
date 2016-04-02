@@ -4,7 +4,7 @@ import objetos.futbol.JugadasPrimitivas.Patear;
 
 //Patear
 public class Opcion_patear_q extends OpcionDeMenu {
-	private Patear J = new Patear(1080, "Patear");
+	private Patear Pateo = new Patear(1080, "Patear");
 
 	public void ejecutar() {
 		J.ejecutar();
