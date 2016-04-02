@@ -6,7 +6,8 @@
 
 # Medidas importantes:
 - Diametro Llanta: 56 mm
-- Distancia entre Llantas:
+- Distancia entre llantas, extremo a extremo :13,5 mm Aprox.
+- Largo del eje: 9,5 mm Aprox.
 
 
 # ORDEN DE LOS MOTORES:
