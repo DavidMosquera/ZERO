@@ -24,8 +24,4 @@ public class Adelantar extends jugadaPrimitiva {
 		Motor.B.stop(); //Metodo que detiene el movimiento del robot
 		
 	}
-	public static double Delta_PrimTaco(double a){
-		return Motor.A.getTachoCount()-a;
-		
-	}
 }
