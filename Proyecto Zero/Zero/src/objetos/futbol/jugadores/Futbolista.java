@@ -40,6 +40,9 @@ public class Futbolista {
 	public void setNombre(String nombre){
 		this.nombre=nombre;
 	}
+	public String getNombre(){
+		return nombre;
+	}
 	public String getPosicion(){
 		return this.posicion;
 		//pusimos el this para que quede mas bonito y nos evitamos errores
