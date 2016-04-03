@@ -6,30 +6,23 @@ import lejos.pc.comm.*;
 
 public class Cancha {
 	//se está trabajando en milímetros
-	static final int largo=1830;
-	static final int ancho=1220;
+	static final double largo=1830;
+	static final double ancho=1220;
+	public static String Grafico[][] = new String [13][19]; //Cancha que muestra la posicion del robot.
 	
-	private static String Grafico[][] = new String [13][19]; //Cancha que muestra la posicion del robot.
-	static String Memoria_Grafico=" ";
-	static int Memoria_XGrafico=0;
-	static int Memoria_YGrafico=0;
-	static int X;
-	static int Y;
+	public static int Memoria_angulo; // Calculamos para allar el angulo actual.
+	public static int Angulo_actual; // Calculamos para las posiciones tanto en X como en Y.
+	public static double Delta_taco; // Calculamos en cada cambio de jugada.
+	public static double Memoria_taco; // Calculamos para allar el cambio actual del tacometro.
 	
-	public static double Memoria_angulo; // Calculamos para allar el angulo actual.
-	public static double Angulo_actual; // Calculamos para las posiciones tanto en X como en Y.
-	public static int Delta_taco; // Calculamos en cada cambio de jugada.
-	public static int Memoria_taco; // Calculamos para allar el cambio actual del tacometro.
-	
-	public static boolean Fuera_de_posicion=false;
 	public static double PosicionRobot_x; // Static?
 	public static double PosicionRobot_y;
 	public static int DireccionRobot;//no se sabe si entero, double o String
 	
 	private NXTConnector conex = new NXTConnector();
-	private static short Largo_llantas=135; // Medida entre las llantas, tomada por los extremos.
-	private static short Diametro_rueda=56; // Diametro de la rueda.
-	private static int constante_angulo=((360*Diametro_rueda)/Largo_llantas) ; //Formula:((360*Diametros_ruedas)/Largo_llantas)*/
+	private final short Largo_llantas=135; // Medida entre las llantas, tomada por los extremos.
+	private static final short Diametro_rueda=56; // Diametro de la rueda.
+	private final double constante_angulo=((360*Diametro_rueda)/Largo_llantas) ; //Formula:((360*Diametros_ruedas)/Largo_llantas)*/
 	
 	
 	public Cancha(){
@@ -37,8 +30,9 @@ public class Cancha {
 		Motor.A.resetTachoCount();
 		Motor.B.resetTachoCount();
 		Motor.C.resetTachoCount();
-		
-		
+		PosicionRobot_x=0;
+		PosicionRobot_y=0;
+		DireccionRobot=0;
 		//Resetea los tacÃ³metros, pone los valores en 0. (Constructor)
 	}
 	
@@ -46,8 +40,6 @@ public class Cancha {
 		PosicionRobot_x=0;
 		PosicionRobot_y=0;
 		DireccionRobot=0;
-		Memoria_taco=0;
-		Memoria_angulo=0;
 		Motor.A.resetTachoCount(); // Motor Derecho reinicia el tacÃ³metro
 		Motor.B.resetTachoCount(); // Motor Izquierdo reinicia el tacÃ³metro
 		//Reinicia los valores de los atributos.
@@ -78,13 +70,13 @@ public class Cancha {
 			yf= ((sen(angulo))*(m)) +x0(posicoin anterior en y)
 		*/
 	}
-	public static double calcular_dir_derecha(){
+	public double calcular_dir_derecha(){
 		//fórmulas
 		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)-Memoria_angulo);
 		//(constante_angulo*cambio_Tacometro)+ angulo0(angulo anterior)(es + si se gira a la izquierdo)
 		
 	}
-	public static double calcular_dir_izquierda(){
+	public double calcular_dir_izquierda(){
 		//fórmulas
 		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)+Memoria_angulo);
 		//(constante_angulo*cambio_Tacometro)- angulo0(angulo anterior)(es - si se gira a la derecha)
@@ -114,37 +106,8 @@ public class Cancha {
 		}
 		return r;
 	}
-	public static void Localizacion_Robot(){ //Metodo para cambiar la localizacion del robot
-	    String n;                           // Utilizamos varios Condicionales y variables auxiliares,
-	    Memoria_XGrafico=X;                //  parar ir remplazando entre valores de la matriz de Strings
-		Memoria_YGrafico=Y;
-		Grafico[Memoria_XGrafico][Memoria_YGrafico]=Memoria_Grafico;
-		X=(int)Math.floor(PosicionRobot_x/100);
-		Y=(int)Math.floor(PosicionRobot_y/100);
-		Memoria_Grafico=Grafico[X][Y];
-		if (Angulo_actual>=0){
-			n = String.valueOf(Math.floor(Angulo_actual));
-			if((Math.floor(Angulo_actual)/100)<=0.09){
-				n="00"+n;
-			}
-			else if((Math.floor(Angulo_actual)/100)<=0.9){
-				n="0"+n;	
-			}
-			else{
-			}
-		}
-		else{
-			n= String.valueOf(Math.floor(360+Angulo_actual));
-			if((Math.floor(Math.floor(360+Angulo_actual))<=0.01)){
-				n="00"+n;
-			}
-			else if((Math.floor(360+Angulo_actual)/100)<=0.9){
-				n="0"+n;	
-			}
-			else{
-			}
-		}
-		Grafico[Y][X]=n;
+	public static void Localizacion_Robot(){
+		
 	}
 	public double getPosicionRobot_x(){
 		return PosicionRobot_x;
