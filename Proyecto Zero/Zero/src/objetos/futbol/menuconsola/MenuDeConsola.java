@@ -167,10 +167,24 @@ public class MenuDeConsola {
 	}
 
 	// imprime las opciones del jugador
-	private void imprimir_opciones_jugador() {
-		System.out.println("Opciones: " + "\n" + "(w) Adelante " + "\n" + "(s) Retroceder "
-				+ "\n" + "(a) Girar a la Izquierda " + "\n" + "(d) Girar a la Derecha " + "\n" + "(q) Patear " + "\n"
-				+ "(e) Frenar" + "\n" + "(t) Salir");
+	private void imprimir_opciones_jugador() { //Matriz de Strings implementada en el menú para la localización. 
+		System.out.println(               //Falta la implementación de las Jugadas complejas y las otras opciones.
+				"Opciones:"+		
+				"\n"+"¶═══════════════════════════════╦══════════════════════════════¶"+ 
+	                        "\n"+"║ "+Cancha.imprimir_fila_Grafico(0)+ "   ║ "+ "   (W) Adelante" +
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(1)+ "   ║ "+ "   (S) Retroceder"+
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(2)+ "   ║ "+ "   (A) Girar Izquierda"+
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(3)+ "   ║ "+ "   (D) Girar Derecha"+
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(4)+ "   ║ "+ "   (Q) Patear"+
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(5)+ "   ║ "+ "   (E) Frenar"+          
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(6)+ "   ║ "+ "   (T) Salir"+
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(7)+ "   ║ "+        
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(8)+ "   ║ "+                          
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(9)+ "   ║ "+                          
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(10)+"   ║ "+                           
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(11)+"   ║ "+                          
+				"\n"+"║ "+Cancha.imprimir_fila_Grafico(12)+"   ║ "+                           
+				"\n"+"¶═══════════════════════════════╩══════════════════════════════¶ ");
 	}
 
 	// este metodo imprime el menú de bienvenida y pregunta el rol
