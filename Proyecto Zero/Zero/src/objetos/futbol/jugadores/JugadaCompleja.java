@@ -1,5 +1,5 @@
 package objetos.futbol.jugadores;
-import java.util.*;
+import java.util.ArrayList;
 import objetos.futbol.JugadasPrimitivas.*;
 
 public abstract class JugadaCompleja {
