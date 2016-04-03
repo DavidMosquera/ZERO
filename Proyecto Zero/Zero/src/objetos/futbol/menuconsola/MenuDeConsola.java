@@ -8,6 +8,7 @@ import lejos.pc.comm.*;
 import objetos.futbol.jugadores.Arquero;
 import objetos.futbol.jugadores.Delantero;
 import objetos.futbol.jugadores.JugadaCompleja;
+import objetos.futbol.cancha.Cancha;
 
 
 public class MenuDeConsola {
