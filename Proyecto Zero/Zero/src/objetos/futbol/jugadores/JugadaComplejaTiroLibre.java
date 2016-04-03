@@ -15,14 +15,14 @@ public class JugadaComplejaTiroLibre extends JugadaCompleja {
 			this.listaJugadasP.get(i).ejecutar();
 		}	
 	}
-    public void parar(){
-    	Motor.A.stop();
+        public void parar(){
+    	        Motor.A.stop();
 		Motor.B.stop();
 		Motor.C.stop(); //Aca tendriamos que hacer que el brazo vuelva a la posicion inicial, ya que puede parase mientras lo levanta
 	}
-    public String IdentificarJugada(){
-	    return "Jugada de Tiro Libre";
-    }
+        public String IdentificarJugada(){
+	        return "Jugada de Tiro Libre";
+        }
 
 }
 
