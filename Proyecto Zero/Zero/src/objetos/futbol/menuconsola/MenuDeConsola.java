@@ -24,7 +24,11 @@ public class MenuDeConsola {
 														// seleccionada
 	private Delantero delantero;
 	private Arquero arquero;
-
+	
+	File Jugadas = new File ("Jugadas.txt"); //Aca es donde le asignamos a el atributo Jugadas que se vincule con el documento
+	FileOutputStream Archivo = new FileOutputStream(Jugadas); //Se crea el objeto que que nos relaciona el documento con el objeto que escribira sobre el
+	PrintStream Escritor = new PrintStream(Archivo); //Este sera el objeto que empezara a escribir la informacion en el documento.
+	
 
 	public void lanzarMenu() {
 		setLista_arqueros();
@@ -257,4 +261,8 @@ public class MenuDeConsola {
 		Delantero Monatomate= new Delantero("Monatomate","Delantero",new ArrayList<JugadaCompleja>(),00,5);
 		this.lista_delanteros.add(Monatomate);
 	}
+	public MenuDeConsola() throws FileNotFoundException {
+		// Constructor necesario para poder asignar a Archivo el documento "Jugadas.txt"
+	} 
+	
 }
