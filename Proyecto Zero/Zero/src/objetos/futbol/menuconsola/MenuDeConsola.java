@@ -1,5 +1,9 @@
 package objetos.futbol.menuconsola;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import lejos.nxt.*;
@@ -9,7 +13,6 @@ import objetos.futbol.jugadores.Arquero;
 import objetos.futbol.jugadores.Delantero;
 import objetos.futbol.jugadores.JugadaCompleja;
 import objetos.futbol.cancha.Cancha;
-
 
 public class MenuDeConsola {
 
