@@ -35,6 +35,12 @@ public class MenuDeConsola {
 	
 
 	public void lanzarMenu() {
+		
+		NXTConnector conn = new NXTConnector();
+		System.out.println("Conectado: " + conn.connectTo());
+		NXTCommandConnector.setNXTCommand(new NXTCommand(conn.getNXTComm()));
+		
+		lista_opc(Opciones);
 		setLista_arqueros();
 		setLista_delanteros();
 		// primero se le pregunta al usuario si es jugador o admin
@@ -63,12 +69,7 @@ public class MenuDeConsola {
 	private void lanzar_usuario(){
 		boolean confirmacion = true;
 		while (confirmacion) {
-			// se cambia la ubicación para que solo el usuario se
-			// conecte al
-			// robot
-			NXTConnector conn = new NXTConnector();
-			System.out.println("Conectado: " + conn.connectTo());
-			NXTCommandConnector.setNXTCommand(new NXTCommand(conn.getNXTComm()));
+			
 
 			// elegir los jugadores
 			while(confirmacion){
@@ -89,19 +90,12 @@ public class MenuDeConsola {
 				imprimir_opciones_jugador();// imprime el menú con las
 											// opciones
 											// de el jugador
-				String acccion = scanner.next();// lo cambie para no
-												// confundirnos con opc
-												// o
-												// opcion
-				/*
-				 * se usa un String para que no nos salte error i
-				 * ingresamos un String por eroor, solo un aviso por
-				 * consola
-				 */
+				String action= scanner.next();
+				
 
 				detener_accion(memoria);
-				opcion(accion);
-				memoria = acccion;
+				opcion(action);
+				memoria = action;
 			}
 		}
 	}
