@@ -42,7 +42,7 @@ public class Cancha {
 		//Resetea los tacÃ³metros, pone los valores en 0. (Constructor)
 	}
 	
-	public void IniciarRobot(){
+	public static void IniciarRobot(){
 		PosicionRobot_x=0;
 		PosicionRobot_y=0;
 		DireccionRobot=0;
