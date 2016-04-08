@@ -13,8 +13,8 @@ public class Cancha {
 	static String Memoria_Grafico=" ";
 	static int Memoria_XGrafico=0;
 	static int Memoria_YGrafico=0;
-	static int X;
-	static int Y;
+	static int X=0;
+	static int Y=0;
 	
 	public static double Memoria_angulo; // Calculamos para allar el angulo actual.
 	public static double Angulo_actual; // Calculamos para las posiciones tanto en X como en Y.
@@ -33,7 +33,7 @@ public class Cancha {
 	
 	
 	public Cancha(){
-		NXTCommandConnector.setNXTCommand(new NXTCommand(conex.getNXTComm())); //Comunica con el robot
+		
 		Motor.A.resetTachoCount();
 		Motor.B.resetTachoCount();
 		Motor.C.resetTachoCount();
@@ -58,11 +58,11 @@ public class Cancha {
 		PosicionRobot_x=Cancha.calcular_x();//las funciones calcular X y Y respectivamente.
 		//FALTA: VER SI ES DELANTERO O PORTERO Y RETORNAR TRUE OR FALSE
 		//utilizar las medidas
-		return true;
+		return false;
 	}
 	public static double calcular_x(){
 		//operaciones geomÃ©tricas con coseno
-		double m=Diametro_rueda*Math.PI*(Motor.A.getTachoCount()-Memoria_taco);
+		double m=Diametro_rueda*Math.PI*(Motor.A.getTachoCount()-Memoria_taco)/180;
 		return ((Math.cos(Memoria_angulo+Angulo_actual))*(m))+ PosicionRobot_x;
 		/*
 			m=DiametroLlantas*Pi*cambio_Tacometro
@@ -71,7 +71,7 @@ public class Cancha {
 	}
 	public static double calcular_y(){
 		//operaciones geométricas con seno
-		double m=Diametro_rueda*Math.PI*(Motor.A.getTachoCount()-Memoria_taco);
+		double m=Diametro_rueda*Math.PI*(Motor.A.getTachoCount()-Memoria_taco)/180;
 		return ((Math.sin(Memoria_angulo+Angulo_actual))*(m))+ PosicionRobot_y;
 		/*
 			m=DiametroLlantas*Pi*cambio_Tacometro
@@ -80,13 +80,13 @@ public class Cancha {
 	}
 	public static double calcular_dir_derecha(){
 		//fórmulas
-		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)-Memoria_angulo);
+		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)-Memoria_angulo)/(180*10);
 		//(constante_angulo*cambio_Tacometro)+ angulo0(angulo anterior)(es + si se gira a la izquierdo)
 		
 	}
 	public static double calcular_dir_izquierda(){
 		//fórmulas
-		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)+Memoria_angulo);
+		return(constante_angulo*(Motor.A.getTachoCount()-Memoria_taco)+Memoria_angulo)/(180*10);
 		//(constante_angulo*cambio_Tacometro)- angulo0(angulo anterior)(es - si se gira a la derecha)
 	}
 	//get para los valores de la posición en la cancha (ADMIN).
@@ -114,13 +114,14 @@ public class Cancha {
 		}
 		return r;
 	}
+	
 	public static void Localizacion_Robot(){ //Metodo para cambiar la localizacion del robot
 	    String n;                           // Utilizamos varios metodos, parar ir remplazando
 	    Memoria_XGrafico=X;                // entre valores de la matriz de Strings
 		Memoria_YGrafico=Y;
 		Grafico[Memoria_XGrafico][Memoria_YGrafico]=Memoria_Grafico;
-		X=(int)Math.floor(PosicionRobot_x/100);
-		Y=(int)Math.floor(PosicionRobot_y/100);
+		Y=Math.abs((int)(PosicionRobot_x/180));
+		X=Math.abs((int)(PosicionRobot_y/180));
 		Memoria_Grafico=Grafico[X][Y];
 		if (Angulo_actual>=0){
 			n = String.valueOf(Math.floor(Angulo_actual));
@@ -144,7 +145,7 @@ public class Cancha {
 			else{
 			}
 		}
-		Grafico[Y][X]=n;
+		Grafico[X][Y]=n;
 	}
 	public double getPosicionRobot_x(){
 		return PosicionRobot_x;

@@ -10,14 +10,12 @@ public class Patear extends jugadaPrimitiva {
 	}
 	public void ejecutar(){ // Ejecuta Patear, se devuelve en 1 segundo.
 		Motor.C.backward();
-		Delay.msDelay(1000);
+		Delay.msDelay(350);
 		Motor.C.forward();
-		Delay.msDelay(1000);
+		Delay.msDelay(400);
 		Motor.C.stop();
 	}
 	public void parar(){
-		Motor.C.forward();
-		Delay.msDelay(1000);
 		Motor.C.stop();
 		
 		/*se puede detener en cualquier momento y se debe devovlver 

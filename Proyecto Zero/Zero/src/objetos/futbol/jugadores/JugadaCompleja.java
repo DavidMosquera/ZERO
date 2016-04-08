@@ -1,15 +1,16 @@
 package objetos.futbol.jugadores;
 import java.util.ArrayList;
 import objetos.futbol.JugadasPrimitivas.*;
+import objetos.futbol.menuconsola.UsuarioAdmin;
 
 public abstract class JugadaCompleja {
 	String nombreJugada;//revisar bien encapsulamiento-No se debe cambiar luego de establecer
 	String fechaCreacion; //dia-mes-año -----No se debe cambiar luego de establecer
 	String Explicacion;
     ArrayList <jugadaPrimitiva> listaJugadasP;
-	UsuarioAdministrador Autor; //Tenemos que revisar donde lo creamos -----No se debe cambiar luego de establecer
+	UsuarioAdmin Autor; //Tenemos que revisar donde lo creamos -----No se debe cambiar luego de establecer
 
-	public JugadaCompleja(String NomJug, String FechCrea, UsuarioAdministrador Aut, ArrayList<jugadaPrimitiva> List, String Expli){
+	public JugadaCompleja(String NomJug, String FechCrea, UsuarioAdmin Aut, ArrayList<jugadaPrimitiva> List, String Expli){
 		this.nombreJugada = NomJug;
 		this.fechaCreacion = FechCrea;
 		this.Autor = Aut;
@@ -36,5 +37,8 @@ public abstract class JugadaCompleja {
 	public abstract void ejecutar(); // en las 3 subclases dice en el texto que antes de ejecutar se tiene que calcular la posicion del robot y que no 
 	//infirnja las normas y luego ejecutar la jugada
 	public abstract void parar();
+	public String getExplicacion(){
+		return Explicacion;
+	}
 	
 }
