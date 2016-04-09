@@ -1,11 +1,9 @@
 package objetos.futbol.menuconsola;
-import java.io.FileNotFoundException;
-import objetos.futbol.cancha.Cancha;
+import java.io.IOException;
 public class Ejecutable_Temporal {
-	public static void main (String[]args) throws FileNotFoundException{
-		Cancha.llenarGrafico();
+	public static void main (String[]args) throws IOException{	
+		UsuarioUsuario.Cancha1.llenarGrafico();
 		MenuDeConsola Alpha = new MenuDeConsola();
-		Cancha Cancha1 = new Cancha ();
 		Alpha.lanzarMenu();
 		
 	}

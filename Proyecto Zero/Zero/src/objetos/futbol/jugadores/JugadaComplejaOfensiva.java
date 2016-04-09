@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import lejos.nxt.Motor;
 import objetos.futbol.JugadasPrimitivas.jugadaPrimitiva;
+import objetos.futbol.menuconsola.UsuarioAdmin;
 
 public class JugadaComplejaOfensiva extends JugadaCompleja {
 	int i;
-	public JugadaComplejaOfensiva(String NomJug, String FechCrea, UsuarioAdministrador Aut, ArrayList<jugadaPrimitiva> List, String Expli){
+	public JugadaComplejaOfensiva(String NomJug, String FechCrea, UsuarioAdmin Aut, ArrayList<jugadaPrimitiva> List, String Expli){
 		super(NomJug,FechCrea,Aut, List,Expli);
 	}
 	public void ejecutar(){
