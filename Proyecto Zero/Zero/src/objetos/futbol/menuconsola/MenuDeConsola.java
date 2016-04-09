@@ -31,7 +31,7 @@ public class MenuDeConsola {
 			System.err.println("Conexion Fallida");
 			System.exit(1);
 		}*/
-		Cancha.IniciarRobot();
+		UsuarioUsuario.Cancha1.IniciarRobot();
 		System.out.println("Conectado: " + conn.connectTo());
 		NXTCommandConnector.setNXTCommand(new NXTCommand(conn.getNXTComm()));
 		//Arias hace esta parte de setLista_arqueros(); y delanteros

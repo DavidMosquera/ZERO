@@ -27,6 +27,9 @@ public abstract class JugadaCompleja {
 			if (this.listaJugadasP.equals(JC.listaJugadasP)){
 				return true;
 			}
+			else{
+				return false;
+			}
 		}
 		else{
 			return false;

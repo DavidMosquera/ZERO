@@ -9,7 +9,7 @@ import objetos.futbol.jugadores.Delantero;
 
 
 public class UsuarioUsuario {
-	
+	public  static Cancha Cancha1 = new Cancha();
 	private ArrayList<OpcionDeMenu> Opciones = new ArrayList<OpcionDeMenu>();
 	private Scanner scanner = new Scanner(System.in);
 	private String usuario_nombre;
@@ -50,12 +50,12 @@ public class UsuarioUsuario {
 				//si no esta en posicoin adecuada le pide que cambie de jugaros
 			
 				//desde aca partir
-				if(Cancha.Fuera_de_posicion==false){
+				if(Cancha1.Fuera_de_posicion==false){
 					
 				//partir 2
 				//menu diferente para arquero y delantero
 				//si esta dentro de la cancha pero con jugador no permitido que cambie
-					if(Cancha.calcularPosicionJugador()==false&&arquero_delantero==false){
+					if(Cancha1.calcularPosicionJugador()==false&&arquero_delantero==false){
 					
 						imprimir_opciones_jugador(false);//cambiar a opciones de menu arquero
 						
@@ -64,7 +64,7 @@ public class UsuarioUsuario {
 						opcion(action2,false);//
 						memoria = action2;
 					}
-					else if(Cancha.calcularPosicionJugador()==true&&arquero_delantero==true){
+					else if(Cancha1.calcularPosicionJugador()==true&&arquero_delantero==true){
 						imprimir_opciones_jugador(true);//cambiar a opciones de menu arquero
 						
 						String action2 = scanner.next();
@@ -76,7 +76,7 @@ public class UsuarioUsuario {
 					else{
 						
 					//partir3
-						if(Cancha.calcularPosicionJugador()==false){
+						if(Cancha1.calcularPosicionJugador()==false){
 							System.out.println("Posicion incorrecta porfavor cambie de jugador a portero");
 							System.out.println("(1) cambiar a portero");
 							String basura = scanner.next();
@@ -117,7 +117,7 @@ public class UsuarioUsuario {
 					String basura= scanner.next();
 					while(true){
 						if(basura.compareTo("1")==0){
-							Cancha.IniciarRobot(); //poner este metodo estatico check :)
+							Cancha1.IniciarRobot(); //poner este metodo estatico check :)
 							break;
 						}
 						else{
@@ -224,19 +224,19 @@ public class UsuarioUsuario {
 			System.out.println(               //Falta la implementaciÃ³n de las Jugadas complejas y las otras opciones.
 					"Opciones:"+		
 					"\n"+"Â¶â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•¦â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�Â¶"+ 
-		            "\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(12)+ "   â•‘ "+ "   (W) Adelante" +
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(11)+ "   â•‘ "+ "   (S) Retroceder"+
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(10)+ "   â•‘ "+ "   (A) Girar Izquierda"+
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(9)+ "   â•‘ "+ "   (D) Girar Derecha"+
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(8)+ "   â•‘ "+ "   (Q) Patear"+
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(7)+ "   â•‘ "+ "   (E) Frenar"+          
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(6)+ "   â•‘ "+ "   (T) Salir"+
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(5)+ "   â•‘ "+        
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(4)+ "   â•‘ "+                          
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(3)+ "   â•‘ "+                          
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(2)+"   â•‘ "+                           
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(1)+"   â•‘ "+                          
-					"\n"+"â•‘ "+Cancha.imprimir_fila_Grafico(0)+"   â•‘ "+                           
+		            "\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(0)+ "   â•‘ "+ "   (W) Adelante" +
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(1)+ "   â•‘ "+ "   (S) Retroceder"+
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(2)+ "   â•‘ "+ "   (A) Girar Izquierda"+
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(3)+ "   â•‘ "+ "   (D) Girar Derecha"+
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(4)+ "   â•‘ "+ "   (Q) Patear"+
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(5)+ "   â•‘ "+ "   (E) Frenar"+          
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(6)+ "   â•‘ "+ "   (T) Salir"+
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(7)+ "   â•‘ "+        
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(8)+ "   â•‘ "+                          
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(9)+ "   â•‘ "+                          
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(10)+"   â•‘ "+                           
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(11)+"   â•‘ "+                          
+					"\n"+"â•‘ "+Cancha1.imprimir_fila_Grafico(12)+"   â•‘ "+                           
 					"\n"+"Â¶â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•©â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�â•�Â¶ ");
 		
 		}
