@@ -1,9 +1,10 @@
 package objetos.futbol.jugadores;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //EDITABLE, AUN NO SABEMOS DONDE ESTÁN LOS MOTORES DEL ROBOT.
-public class Arquero extends Futbolista {
+public class Arquero extends Futbolista implements Serializable{
 	private int TiempoSinGoles;
 	private byte dorsal;
 	public Arquero(String nombre, String posicion, ArrayList<JugadaCompleja> listaJugadas, 

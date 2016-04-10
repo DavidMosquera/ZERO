@@ -1,8 +1,10 @@
 package objetos.futbol.JugadasPrimitivas;
+import java.io.Serializable;
+
 import lejos.nxt.*;
 import lejos.util.Delay; 
 
-public class Patear extends jugadaPrimitiva {
+public class Patear extends jugadaPrimitiva implements Serializable{
 	public Patear (int potencia, String nombre){
 		this.potencia= potencia;
 		this.nombre=nombre;

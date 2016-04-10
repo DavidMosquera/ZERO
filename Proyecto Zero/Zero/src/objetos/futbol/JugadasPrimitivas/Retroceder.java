@@ -1,8 +1,10 @@
 package objetos.futbol.JugadasPrimitivas;
+import java.io.Serializable;
+
 import lejos.nxt.*;//mirar descripcion en Adelantar
 import objetos.futbol.menuconsola.UsuarioUsuario;
 
-public class Retroceder extends jugadaPrimitiva {
+public class Retroceder extends jugadaPrimitiva implements Serializable{
 	public Retroceder(int potencia, String nombre){
 		this.potencia= potencia;
 		this.nombre=nombre;

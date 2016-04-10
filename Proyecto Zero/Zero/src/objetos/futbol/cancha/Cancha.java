@@ -1,8 +1,9 @@
 package objetos.futbol.cancha;
+import java.io.Serializable;
 import java.lang.Math;//para poder usar seno y coseno
 import lejos.nxt.*;
 
-public class Cancha {
+public class Cancha implements Serializable{
 	//se está trabajando en milímetros
 	protected final int largo=1830;
 	protected final int ancho=1220;
@@ -101,7 +102,7 @@ public class Cancha {
 			Grafico[j][0]="  °";
 			Grafico[j][18]="  °";
 		}	
-		this.Localizacion_Robot();
+		//this.Localizacion_Robot();
 	}
 	public String imprimir_fila_Grafico(int a){ //Metodo para imprimir el gráfico
 		int i;
@@ -118,7 +119,7 @@ public class Cancha {
 	    Memoria_YGrafico=Y;
 	    int AnguloGrafico= (int) Math.toDegrees(Angulo_actual);
 		Grafico[Memoria_XGrafico][Memoria_YGrafico]=Memoria_Grafico;
-		Y=(int)Math.abs((PosicionRobot_x)*(1/Math.PI))/100;
+		Y=(int)(Math.abs(12-((PosicionRobot_x)*(1/Math.PI))/100));
 		X=(int)Math.abs(((PosicionRobot_y)*(1/Math.PI))/100);
 		Memoria_Grafico=Grafico[X][Y];
 		if (AnguloGrafico>=360){

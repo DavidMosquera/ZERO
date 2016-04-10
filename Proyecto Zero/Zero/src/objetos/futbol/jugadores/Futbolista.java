@@ -2,6 +2,8 @@ package objetos.futbol.jugadores;
 
 import java.util.ArrayList;
 
+import objetos.futbol.JugadasPrimitivas.Jugada;
+
 //IMPORTANTE:
 //EDITABLE, AUN NO SABEMOS DONDE ESTÁN LOS MOTORES DEL ROBOT.
 //TODAS LAS MEDIDAS SE ENCUENTRAN EN mm (milímetros)
@@ -11,7 +13,7 @@ public class Futbolista {
 	private String nombre;
 	private final String posicion;
 	public ArrayList<JugadaCompleja> listaJugadas;
-	public static ArrayList<JugadaCompleja> listaTotalJugadas; //lista de todas las jugadas complejas
+	public static ArrayList<Jugada> listaTotalJugadas; //lista de todas las jugadas complejas
 	
 	public Futbolista(String nombre, String posicion, ArrayList<JugadaCompleja> listaJugadas){
 		this.nombre=nombre;

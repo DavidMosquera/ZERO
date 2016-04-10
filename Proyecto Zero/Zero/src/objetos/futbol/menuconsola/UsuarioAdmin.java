@@ -6,7 +6,7 @@ import java.util.Scanner;
 import objetos.futbol.jugadores.Arquero;
 import objetos.futbol.jugadores.Delantero;
 
-public class UsuarioAdmin {
+public class UsuarioAdmin extends Usuario {
 	
 	private ArrayList<OpcionDeMenu> Opciones = new ArrayList<OpcionDeMenu>();
 	private Scanner scanner = new Scanner(System.in);
@@ -64,6 +64,7 @@ public class UsuarioAdmin {
 		Opciones.add(new Admin_Consultar_ListaJugadores());			// opcion (4) consultar lista jugadores
 		Opciones.add(new Admin_ConsultarInfo());					// opcion (5) consultar info jugadores
 		Opciones.add(new Admin_ConsultarListaJugadasDeUnJugador());	// opcion (6) consultar info jugada especifica
+		Opciones.add(new Admin_ExplicacionJugadaDeUnJugador());		// opcion (7) explicion jugada compleja
 		
 		
 	}

@@ -1,8 +1,10 @@
 package objetos.futbol.JugadasPrimitivas;
+import java.io.Serializable;
+
 import lejos.nxt.*; //Mirar descripciÃ³n en Adelantar
 import objetos.futbol.menuconsola.UsuarioUsuario;
 
-public class GirarDerecha extends jugadaPrimitiva {
+public class GirarDerecha extends jugadaPrimitiva implements Serializable{
 	public GirarDerecha (int potencia, String nombre){
 		this.potencia= potencia;
 		this.nombre=nombre;
