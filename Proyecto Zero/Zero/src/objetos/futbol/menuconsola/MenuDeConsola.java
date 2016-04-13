@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 import lejos.nxt.*;
@@ -23,11 +24,11 @@ import objetos.futbol.jugadores.Futbolista;
 import objetos.futbol.jugadores.JugadaCompleja;
 import objetos.futbol.jugadores.JugadaComplejaDefensiva;
 
-public class MenuDeConsola {
+public class MenuDeConsola implements Serializable {
 
 	// atributos:
-	private ArrayList<Futbolista> lista_futbolistas = new ArrayList <Futbolista>();
-	private ArrayList<Usuario> lista_usuarios = new ArrayList <Usuario>();
+	static ArrayList<Futbolista> lista_futbolistas = new ArrayList <Futbolista>();
+	static ArrayList<Usuario> lista_usuarios = new ArrayList <Usuario>();
     static ArrayList<UsuarioAdmin> lista_usuariosAdmin = new ArrayList <UsuarioAdmin>();
 	static ArrayList<UsuarioUsuario> lista_usuariosUsuarios = new ArrayList <UsuarioUsuario>();
 	
@@ -39,7 +40,7 @@ public class MenuDeConsola {
 	private byte memoria = -1;
 
 	private byte rol;
-	private Scanner scanner = new Scanner(System.in); // Para leer la opción
+	private transient Scanner scanner = new Scanner(System.in); // Para leer la opción
 														// seleccionada
 
 	public void lanzarMenu() throws IOException{
@@ -59,7 +60,7 @@ public class MenuDeConsola {
 			System.out.println("Error: " + e.getMessage());
 		}
 		
-		try{
+		/*try{
 			ObjectInputStream LectorObj = new ObjectInputStream(new FileInputStream("Jugadas.dat"));
 			Jugada Aux;
 			do{
@@ -70,7 +71,7 @@ public class MenuDeConsola {
 		}catch(EOFException e){
 		}catch(ClassNotFoundException e){
 			System.out.println("Error: " + e.getMessage());
-		}
+		}*/
 		try{
 			ObjectInputStream LectorObj = new ObjectInputStream(new FileInputStream("Usuarios.dat"));
 			Usuario Aux;
@@ -158,17 +159,15 @@ public class MenuDeConsola {
 		JugadaComplejaDefensiva Jugadita = new JugadaComplejaDefensiva("Jugadita-prueba","hoy",Yop,Orden,"Esta jugada es para probar lo de camilo");
 		ArrayList <JugadaCompleja> Jugada = new ArrayList<JugadaCompleja>();
 		Jugada.add(Jugadita);
-		Arquero Monato = new Arquero("Monato", "arquero", new ArrayList<JugadaCompleja>(), 00, (byte) 5);
+		Arquero Monato = new Arquero("Monato", "arquero", new ArrayList<JugadaCompleja>(), 00, (byte)5);
 		Arquero Monato1 = new Arquero("Monato1", "arquero", Jugada, 00, (byte) 5);
 		Delantero Monato2 = new Delantero("Monato2", "arquero", new ArrayList<JugadaCompleja>(), 00,  5);
 		Delantero Monato3 = new Delantero("Monato3", "arquero", Jugada, 00,  5);
 		
-		lista_arqueros.add(Monato);
 		lista_arqueros.add(Monato1);
-		lista_delanteros.add(Monato2);
 		lista_delanteros.add(Monato3);
-		lista_futbolistas.add(Monato);
-		lista_futbolistas.add(Monato2);
+		lista_futbolistas.add(Monato1);
+		lista_futbolistas.add(Monato3);
 	}
 
 	private void setLista_delanteros() {
@@ -178,21 +177,28 @@ public class MenuDeConsola {
 	public  void Guardar() throws FileNotFoundException, IOException{
 		int i;
 		ObjectOutputStream SaverFutbolistas = new ObjectOutputStream(new FileOutputStream("Futbolistas.dat"));
-		ObjectOutputStream SaverJugadas = new ObjectOutputStream(new FileOutputStream("Jugadas.dat"));
+		//ObjectOutputStream SaverJugadas = new ObjectOutputStream(new FileOutputStream("Jugadas.dat"));
 		ObjectOutputStream SaverUsuarios = new ObjectOutputStream(new FileOutputStream("Usuarios.dat"));
 		ObjectOutputStream SaverCancha = new ObjectOutputStream(new FileOutputStream("Cancha.dat"));
-		for(i=0;i<lista_futbolistas.size();i++){
-			SaverFutbolistas.writeObject(lista_futbolistas.get(i));
+		if (lista_futbolistas.isEmpty()==false){
+			for(i=0;i<lista_futbolistas.size();i++){
+				SaverFutbolistas.writeObject(lista_futbolistas.get(i));
+			}	
 		}
-		for(i=0;i<Futbolista.listaTotalJugadas.size();i++){
-			SaverJugadas.writeObject(Futbolista.listaTotalJugadas.get(i));
+		/*if (Futbolista.listaTotalJugadas.isEmpty()==false){
+			for(i=0;i<Futbolista.listaTotalJugadas.size();i++){
+				SaverJugadas.writeObject(Futbolista.listaTotalJugadas.get(i));
+			}
+		}*/
+		if (lista_usuarios.isEmpty()==false){
+			for(i=0;i<lista_usuarios.size();i++){
+				SaverUsuarios.writeObject(lista_usuarios.get(i));
+			}
 		}
-		for(i=0;i<lista_usuarios.size();i++){
-			SaverUsuarios.writeObject(lista_usuarios.get(i));
-		}
+		
 		SaverFutbolistas.writeObject(UsuarioUsuario.Cancha1);
 		SaverFutbolistas.close();
-		SaverJugadas.close();
+		//SaverJugadas.close();
 		SaverUsuarios.close();
 		SaverCancha.close();
 		

@@ -119,8 +119,8 @@ public class Cancha implements Serializable{
 	    Memoria_YGrafico=Y;
 	    int AnguloGrafico= (int) Math.toDegrees(Angulo_actual);
 		Grafico[Memoria_XGrafico][Memoria_YGrafico]=Memoria_Grafico;
-		Y=(int)(Math.abs(12-((PosicionRobot_x)*(1/Math.PI))/100));
-		X=(int)Math.abs(((PosicionRobot_y)*(1/Math.PI))/100);
+		Y=(int)(Math.abs(12-((PosicionRobot_x)*(1/Math.PI))/10000));
+		X=(int)Math.abs(((PosicionRobot_y)*(1/Math.PI))/10000);
 		Memoria_Grafico=Grafico[X][Y];
 		if (AnguloGrafico>=360){
 			AnguloGrafico=AnguloGrafico-(AnguloGrafico%360)*360;

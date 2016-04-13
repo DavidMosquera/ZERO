@@ -1,15 +1,17 @@
 package objetos.futbol.menuconsola;
 
+import java.io.Serializable;
+//import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import objetos.futbol.jugadores.Arquero;
 import objetos.futbol.jugadores.Delantero;
 
-public class UsuarioAdmin extends Usuario {
+public class UsuarioAdmin extends Usuario implements Serializable{
 	
 	private ArrayList<OpcionDeMenu> Opciones = new ArrayList<OpcionDeMenu>();
-	private Scanner scanner = new Scanner(System.in);
+	private transient Scanner scanner = new Scanner(System.in);
 	
 	private String admin_nombre;
 	private String admin_contrasena;
@@ -27,14 +29,14 @@ public class UsuarioAdmin extends Usuario {
 		do{
 			lanzar_menu_admin();
 			opcion_ingresada= scanner.next();
-			salir=opcion(opcion_ingresada);//aquñi sa va si es true o false
+			salir=opcion(opcion_ingresada);//aquÃ±i sa va si es true o false
 		}while(salir);
 		
 	}
 	//imprime las opciones del admin
 	void lanzar_menu_admin(){
-		System.out.println("Bienvenido señor Admin:");
-		System.out.println("(1) Crear Jugador"+"\n"+"(2) Crear Jugada Compleja"+"\n"+"(3) Consultar estadísticas"+"\n"+
+		System.out.println("Bienvenido seÃ±or Admin:");
+		System.out.println("(1) Crear Jugador"+"\n"+"(2) Crear Jugada Compleja"+"\n"+"(3) Consultar estadÃ­sticas"+"\n"+
 				"(4) Consultar lista de jugadores"+"\n"+"(5) Consultar info sobre juagadores"+"\n"+
 				"(6) Consultar jugadas de un jugador"+"\n"+"(7) Consultar jugada especifica de un jugador"+
 				"\n"+"(8) Consultar jugadas disponibles para un jugador"+"\n"+"(t) Salir");
@@ -53,7 +55,7 @@ public class UsuarioAdmin extends Usuario {
 			
 		
 		}
-		System.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
+		System.out.println("ERROR NUMERO INGRESADO NO VÃ�LIDO");
 		return true;
 	}
 	//llena el array con las opciones de Menu de admin
