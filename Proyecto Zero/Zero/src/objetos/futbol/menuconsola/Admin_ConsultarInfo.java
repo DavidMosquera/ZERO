@@ -15,16 +15,17 @@ public class Admin_ConsultarInfo extends Admin_Consultar_ListaJugadores{
 		}
 		else{
 			if((opc_1<a) && (opc_1>=0)){
-				MenuDeConsola.lista_delanteros.get(opc_1).toString();
+				System.out.println(MenuDeConsola.lista_delanteros.get(opc_1));
 			}
 			else{
-				MenuDeConsola.lista_delanteros.get(opc_1-a).toString();
+				System.out.println(MenuDeConsola.lista_arqueros.get(opc_1-a));
 			}
 		}
 	}
 	int elegir_opcion(){
 		while(true){
 			imprimir_jugadores();
+			System.out.println("(t) para volver al menu");
 			opc=scanner.next();
 			for(int i=0;i<a+b;i++){
 				if(opc.compareTo(Integer.toString(i))==0){

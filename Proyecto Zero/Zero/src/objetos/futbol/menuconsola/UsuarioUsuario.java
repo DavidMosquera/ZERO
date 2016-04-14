@@ -3,12 +3,15 @@ package objetos.futbol.menuconsola;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import lejos.nxt.remote.NXTCommand;
+import lejos.pc.comm.NXTCommandConnector;
+import lejos.pc.comm.NXTConnector;
 import objetos.futbol.cancha.Cancha;
 import objetos.futbol.jugadores.Arquero;
 import objetos.futbol.jugadores.Delantero;
 
 
-public class UsuarioUsuario {
+public class UsuarioUsuario extends Usuario{
 	public  static Cancha Cancha1 = new Cancha();
 	private ArrayList<OpcionDeMenu> Opciones = new ArrayList<OpcionDeMenu>();
 	private Scanner scanner = new Scanner(System.in);
@@ -19,14 +22,25 @@ public class UsuarioUsuario {
 	private Arquero arquero;
 	// no se si la opcion 7 es suficiente para salir
 	
+	
 	UsuarioUsuario(String usuario_nombre,String usuario_contrasena){
 		this.usuario_nombre=usuario_nombre;
 		this.usuario_contrasena=usuario_contrasena;
 	}
 	
 	void ejecutar() {
+		Cancha1.llenarGrafico();
+		NXTConnector conn = new NXTConnector();
+		/*if (!conn.connectTo("NXT_5", NXTComm.LCP)){
+			System.err.println("Conexion Fallida");
+			System.exit(1);
+		}*/
+		UsuarioUsuario.Cancha1.IniciarRobot();
+		System.out.println("Conectado: " + conn.connectTo());
+		NXTCommandConnector.setNXTCommand(new NXTCommand(conn.getNXTComm()));
+		
 		Lista_opc();
-		System.out.println("TAMAÑO LISTa "+ Opciones.size());
+		
 		boolean confirmacion = true;
 		while (confirmacion) {
 			// elegir los jugadores

@@ -1,9 +1,11 @@
 package objetos.futbol.JugadasPrimitivas;
+import java.io.Serializable;
+
 import lejos.nxt.*;//no sabemos especificamente que vamos a importar pero en este caso los motores
 import objetos.futbol.menuconsola.UsuarioUsuario;// IMPORTANTE: Despues de la propuesta de maÃ±ana del MenÃº, determinaremos donde poner 
 //y donde calcular la posiciÃ³n del jugador, por lo que veo serÃ¡ mÃ¡s sencillo despÃºes de plantear lo que tengo en mente.
 
-public class Adelantar extends jugadaPrimitiva {
+public class Adelantar extends jugadaPrimitiva implements Serializable{
 	
 	public Adelantar(int potencia, String nombre){
 		this.potencia= potencia;

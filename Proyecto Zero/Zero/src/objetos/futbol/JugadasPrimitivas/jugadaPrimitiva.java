@@ -1,5 +1,8 @@
 package objetos.futbol.JugadasPrimitivas;
-public abstract class jugadaPrimitiva {
+
+import objetos.futbol.jugadores.JugadaCompleja;
+
+public abstract class jugadaPrimitiva extends Jugada {
 	String nombre; //revisar si se hacen public o default
 	int potencia;
 	static double Delta_Taco; //Delta del tacómetro, lo utilizamos en cada clase para 
