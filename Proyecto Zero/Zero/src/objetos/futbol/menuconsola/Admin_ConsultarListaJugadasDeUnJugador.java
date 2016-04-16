@@ -40,7 +40,7 @@ class Admin_ConsultarListaJugadasDeUnJugador extends Admin_ConsultarInfo{
 				}
 
 				for(int i=0;i<MenuDeConsola.lista_arqueros.get(opc_1-a).listaJugadas.size();i++){
-					System.out.println("("+i+")"+MenuDeConsola.lista_delanteros.get(opc_1-a).listaJugadas.get(i));
+					System.out.println("("+i+")"+MenuDeConsola.lista_arqueros.get(opc_1-a).listaJugadas.get(i));
 				}
 			}
 		
