@@ -114,7 +114,7 @@ public class MenuDeConsola implements Serializable {
 		}
 
 
-		//setLista_arqueros();
+		setLista_arqueros();
 		
 		
 		// primero se le pregunta al usuario si es jugador o admin
@@ -163,7 +163,7 @@ public class MenuDeConsola implements Serializable {
 		Arquero Monato1 = new Arquero("Monato1", "arquero", Jugada, 00, (byte) 5);
 		Delantero Monato2 = new Delantero("Monato2", "arquero", new ArrayList<JugadaCompleja>(), 00,  5);
 		Delantero Monato3 = new Delantero("Monato3", "arquero", Jugada, 00,  5);
-		
+		Monato1.listaTotalJugadas.add(Jugadita);
 		lista_arqueros.add(Monato1);
 		lista_delanteros.add(Monato3);
 		lista_futbolistas.add(Monato1);

@@ -19,7 +19,7 @@ public class Admin_crear_jugador extends OpcionDeMenu{
 	void ejecutar(){
 		arq_del();
 		System.out.println("ingrese el nombre");
-		nombre=scanner.nextLine();
+		nombre=scanner.next();
 		System.out.println("eligió "+nombre);
 		System.out.println("elegir dorso");
 		dorsal = scanner.nextInt();
@@ -28,16 +28,11 @@ public class Admin_crear_jugador extends OpcionDeMenu{
 			for(int j=0;j<Futbolista.listaTotalJugadas.size();j++){
 				System.out.println("("+j+") "+Futbolista.listaTotalJugadas.get(j));
 			}
-			System.out.println("seguir?"+"\n"+"(1) si"+"(2) no");
 			
-			String cambiar= scanner.next();
-			if(cambiar.compareTo("1")==0){
 			int z=scanner.nextInt();
-			JC.add((JugadaCompleja)MenuDeConsola.lista_jugadas.get(z));
-			}
-			else if(cambiar.compareTo("2")==0){
-				break;
-			}
+			JC.add((JugadaCompleja)Futbolista.listaTotalJugadas.get(z));
+			System.out.println("ingreso "+JC.get(i));
+			
 			
 		}
 		System.out.println("crear el jugarodor con nombre "+nombre+" con dorso "+dorsal+"y jugadas complejas");
@@ -45,10 +40,13 @@ public class Admin_crear_jugador extends OpcionDeMenu{
 		String cambiar=scanner.next();
 		if (cambiar.compareTo("1")==0){
 			if(posicion.compareTo("Delantero")==0){
+				
 				MenuDeConsola.lista_futbolistas.add(new Delantero(nombre,posicion,JC,0,dorsal));
+				MenuDeConsola.lista_delanteros.add(new Delantero(nombre,posicion,JC,0,dorsal));
 			}
 			else if(posicion.compareTo("Arquero")==0){
 				MenuDeConsola.lista_futbolistas.add(new Arquero(nombre,posicion,JC,0,(byte)dorsal));
+				MenuDeConsola.lista_arqueros.add(new Arquero(nombre,posicion,JC,0,(byte)dorsal));
 			}
 		}
 		else{}
