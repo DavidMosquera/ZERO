@@ -17,4 +17,7 @@ public class Delantero extends Futbolista implements Serializable{
 		 return super.toString()+ " con el dorsal " +this.dorsal+" Ha marcado "
 				 + this.golesMarcados;
 	 }
+	 public int getGolesMarcados(){
+		 return this.golesMarcados;
+	 }
 }

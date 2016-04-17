@@ -15,26 +15,74 @@ public class Admin_crear_jugador extends OpcionDeMenu{
 	private int dorsal;
 	private ArrayList<JugadaCompleja> JC= new ArrayList<JugadaCompleja>();
 	private Scanner scanner = new Scanner(System.in); 
-	private boolean paso_1=true,paso_2=true,paso_3=true,paso_4=true;
 	void ejecutar(){
-		arq_del();
-		System.out.println("ingrese el nombre");
-		nombre=scanner.next();
-		System.out.println("eligió "+nombre);
-		System.out.println("elegir dorso");
-		dorsal = scanner.nextInt();
+		arq_o_del();
+		selecciona_nombre();
+		elegir_dorso();
+		elegir_jugadas_complejas();
+		System.out.println("crear el jugarodor con nombre "+nombre+" con dorso "+dorsal+"y jugadas complejas");
+		System.out.println("(1)si"+"\n"+"(2)no");
+		String cambiar=scanner.next();
+		if (cambiar.compareTo("1")==0){
+			if(posicion.compareTo("Delantero")==0){
+				
+				MenuDeConsola.lista_futbolistas.add(new Delantero(nombre,posicion,JC,0,dorsal));
+				MenuDeConsola.lista_delanteros.add(new Delantero(nombre,posicion,JC,0,dorsal));
+			}
+			else if(posicion.compareTo("Arquero")==0){
+				MenuDeConsola.lista_futbolistas.add(new Arquero(nombre,posicion,JC,0,(byte)dorsal));
+				MenuDeConsola.lista_arqueros.add(new Arquero(nombre,posicion,JC,0,(byte)dorsal));
+			}
+		}
+		else{}
+
+		
+	}
+	void parar(){
+		
+	}
+	//metodo para elegir las jugadas complejas
+	private void elegir_jugadas_complejas(){
 		System.out.println("elegir jugadas complejas");
 		for (int i =0;i<3;i++){
 			for(int j=0;j<Futbolista.listaTotalJugadas.size();j++){
 				System.out.println("("+j+") "+Futbolista.listaTotalJugadas.get(j));
 			}
+			while(true){
+				try{	
+					int z=scanner.nextInt();
+					JC.add((JugadaCompleja)Futbolista.listaTotalJugadas.get(z));
+					System.out.println("ingreso "+JC.get(i));
+					break;
+				}
+				catch(Exception e){
+					System.out.println("ERROR NUMERO INGRESADO NO VÃ�LIDO");
+				}
+			}
+			System.out.println("llevas "+(i+1)+" jugadas");
+			System.out.println("deseas seguir?");
+			System.out.println("(1) salir "+"\n"+"o cualquier letra para seguir");
+			try{
+				int x= scanner.nextInt();
+				if(x==1){
+					System.out.println("saliste con "+JC.size()+" jugadas");
+					break;
+				}
+				else{
+					System.out.println("elegiste segir");
+				}
+			}
+			catch(Exception e){
+				System.out.println("elegiste seguir");
+			}
 			
-			int z=scanner.nextInt();
-			JC.add((JugadaCompleja)Futbolista.listaTotalJugadas.get(z));
-			System.out.println("ingreso "+JC.get(i));
+			
 			
 			
 		}
+	}
+	//para confirmar si el admin quiere elegir ese jugador
+	private void confirmacion(){
 		System.out.println("crear el jugarodor con nombre "+nombre+" con dorso "+dorsal+"y jugadas complejas");
 		System.out.println("(1)si"+"\n"+"(2)no");
 		String cambiar=scanner.next();
@@ -51,83 +99,9 @@ public class Admin_crear_jugador extends OpcionDeMenu{
 		}
 		else{}
 		
-		/*do{
-			arq_del();
-			while(paso_2){
-				elegir_nombre();
-				System.out.println(nombre);
-				while(paso_3){
-					elegir_dorso();
-					
-				}
-			}
-			
-		}while(paso_1);*/
-
-		
 	}
-	void parar(){
-		
-	}
-	
-	
-	private void elegir_dorso(){
-		int nom;
-		while(true){
-			System.out.println("\n"+"Elija un dorso");
-			nom = scanner.nextInt();
-			System.out.println("su "+ this.posicion+" se llamará "+ nom);
-			System.out.println("(1) correcto");
-			System.out.println("(2) elegir otra vez");
-			System.out.println("(t) salir");
-			String opc= scanner.next();
-			if(opc.compareTo("1")==0){
-				this.dorsal=nom;
-				return;
-			}
-			else if(opc.compareTo("2")==0){
-				
-			}
-			else if(opc.compareTo("t")==0){
-				paso_4=false;
-				paso_3=false;
-				return;
-			}
-			else{
-				System.out.println("ERROR NUMERO INGRESADO NO VÃ�LIDO");
-			}
-		}
-	}
-	
-	
-	private void elegir_nombre(){
-		String nom;
-		while(true){
-			System.out.println("\n"+"Elija un nombre");
-			nom = scanner.nextLine();
-			System.out.println("su "+ this.posicion+" se llamará "+ nom);
-			System.out.println("(1) correcto");
-			System.out.println("(2) elegir otra vez");
-			System.out.println("(t) salir");
-			String opc= scanner.next();
-			if(opc.compareTo("1")==0){
-				this.nombre=nom;
-				return;
-			}
-			else if(opc.compareTo("2")==0){
-				
-			}
-			else if(opc.compareTo("t")==0){
-				paso_3=false;
-				paso_2=false;
-				return;
-			}
-			else{
-				System.out.println("ERROR NUMERO INGRESADO NO VÃ�LIDO");
-			}
-		}
-	}
-	private void arq_del(){
+	//para selecionar la posicion del jugador 
+	private void arq_o_del(){
 		String pos;
 		while (true){
 			System.out.println("\n"+"Elija la posicion");
@@ -137,22 +111,38 @@ public class Admin_crear_jugador extends OpcionDeMenu{
 			pos = scanner.next();
 			if(pos.compareTo("1")==0){
 				this.posicion="Delantero";
-				paso_2=true;
 				return;
 			}
 			else if(pos.compareTo("2")==0){
 				this.posicion="Arquero";
-				paso_2=true;
 				return;
 			}
 			else if(pos.compareTo("t")==0){
-				paso_1=false;
-				paso_2=false;
 				return;
 			}
 			else {
 				System.out.println("ERROR NUMERO INGRESADO NO VÃ�LIDO");
 			}
+		}
+	}
+	private void selecciona_nombre(){
+		System.out.println("\n"+"Ingresar nombre del jugador:");
+		scanner.nextLine();
+		nombre=scanner.nextLine();
+		System.out.println("\n"+"el jugador se llama:"+"\n"+nombre);
+			
+	}
+	private void elegir_dorso(){
+		System.out.println("\n"+"Ingresar el dorso del jugador");
+		while(true){
+			try{
+				dorsal=scanner.nextInt();
+				break;
+			}
+			catch(Exception e){
+				System.out.println("ERROR NUMERO INGRESADO NO VÃ�LIDO");
+			}
+			
 		}
 	}
 	

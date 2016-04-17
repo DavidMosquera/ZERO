@@ -17,7 +17,9 @@ public class Arquero extends Futbolista implements Serializable{
 		return super.toString()+" con el dorsal"+ this.dorsal +" Tiempo sin Goles "+
 	this.TiempoSinGoles; //no se sobre escribe el metodo ToString de la superClase
 	}
-	 
+	public int getTiempoSinGoles(){
+		return this.TiempoSinGoles;
+	}
 
 }
 

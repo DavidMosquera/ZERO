@@ -61,7 +61,7 @@ public class UsuarioAdmin extends Usuario implements Serializable{
 	//llena el array con las opciones de Menu de admin
 	private void llenar_Opciones(){
 		Opciones.add(new Admin_crear_jugador()); 					// opcion (1) crear jugador
-		Opciones.add(new Admin_Crear_JugadaCompleja());				// opcion (2) crear jugada compleja
+		Opciones.add(new Admin_Crear_JugadaCompleja(this));			// opcion (2) crear jugada compleja
 		Opciones.add(new Admin_ConsultarEstadis());					// opcion (3) consultar estadisticas
 		Opciones.add(new Admin_Consultar_ListaJugadores());			// opcion (4) consultar lista jugadores
 		Opciones.add(new Admin_ConsultarInfo());					// opcion (5) consultar info jugadores

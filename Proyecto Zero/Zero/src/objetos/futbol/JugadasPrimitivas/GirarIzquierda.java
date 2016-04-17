@@ -8,10 +8,9 @@ public class GirarIzquierda extends jugadaPrimitiva implements Serializable{
 	public GirarIzquierda (int potencia, String nombre){
 		this.potencia= potencia;
 		this.nombre=nombre;
-		Motor.A.setSpeed(potencia);
-		Motor.B.setSpeed(potencia);
 	}
 	public void ejecutar(){
+		first_T();
 		UsuarioUsuario.Cancha1.Memoria_taco=Motor.A.getTachoCount();
 		UsuarioUsuario.Cancha1.Memoria_angulo=UsuarioUsuario.Cancha1.Angulo_actual;
 		Motor.A.forward();//Derecho

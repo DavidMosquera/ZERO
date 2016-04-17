@@ -1,5 +1,10 @@
 package objetos.futbol.menuconsola;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -334,5 +339,30 @@ public class UsuarioUsuario extends Usuario{
 			}
 			return true;
 
+		}
+		private void guardar_texto() throws IOException {
+			BufferedReader LectorTxt = new BufferedReader (new FileReader ("Temporal.txt"));
+			PrintStream EscritorFin = new PrintStream (new FileOutputStream("Resultados.txt"));
+			String Aux1;
+			String Aux2;
+			String Aux3;
+			EscritorFin.println("El Delantero " + this.delantero.getNombre() + " anotó " +
+			                          this.delantero.getGolesMarcados() + "goles.");
+			EscritorFin.println("El Arquero " + this.arquero.getNombre() + " lleva " +
+                                 this.arquero.getTiempoSinGoles() + " segundos sin que le anoten.");
+			EscritorFin.println("Se realizaron las siguientes jugadas: ");
+			do {
+				
+				Aux1 = LectorTxt.readLine();
+				Aux2 = LectorTxt.readLine();
+				Aux3 = LectorTxt.readLine();
+				if (Aux1 == null){
+					break;
+				}
+				EscritorFin.println("La Jugada " + Aux1 + " se realizo en (" + Aux2 + "," + Aux3 + ")");
+				
+			} while (true);
+			EscritorFin.close();
+			LectorTxt.close();
 		}
 }

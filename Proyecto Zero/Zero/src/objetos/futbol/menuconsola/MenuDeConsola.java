@@ -26,15 +26,12 @@ import objetos.futbol.jugadores.JugadaComplejaDefensiva;
 
 public class MenuDeConsola implements Serializable {
 
-	// atributos:
-	static ArrayList<Futbolista> lista_futbolistas = new ArrayList <Futbolista>();
-	static ArrayList<Usuario> lista_usuarios = new ArrayList <Usuario>();
+	
     static ArrayList<UsuarioAdmin> lista_usuariosAdmin = new ArrayList <UsuarioAdmin>();
 	static ArrayList<UsuarioUsuario> lista_usuariosUsuarios = new ArrayList <UsuarioUsuario>();
 	
 	static ArrayList<Arquero> lista_arqueros = new ArrayList<Arquero>();
 	static ArrayList<Delantero> lista_delanteros = new ArrayList<Delantero>();
-	static ArrayList<Jugada> lista_jugadas= new ArrayList<Jugada>();
 	private String first_usuario;
 	private String first_contrasena;
 	private byte memoria = -1;
@@ -46,75 +43,29 @@ public class MenuDeConsola implements Serializable {
 	public void lanzarMenu() throws IOException{
 		int i=0;
 		
-		//Arias hace esta parte de setLista_arqueros(); y delanteros
-		try{
-			ObjectInputStream LectorObj = new ObjectInputStream(new FileInputStream("Futbolistas.dat"));
-			Futbolista Aux;
-			do{
-				Aux=(Futbolista)LectorObj.readObject();
-			    lista_futbolistas.add(Aux);
-			}while(Aux!=null);
+		try {
+			ObjectInputStream LectorObj = new ObjectInputStream(new FileInputStream("Estado_Sistema.dat"));
+			Object Aux;
+			do {
+				Aux = (Object) LectorObj.readObject();
+				if (Aux instanceof Arquero) {
+					lista_arqueros.add((Arquero) Aux);
+				} else if (Aux instanceof Delantero) {
+					lista_delanteros.add((Delantero) Aux);
+				} else if (Aux instanceof UsuarioUsuario) {
+					lista_usuariosUsuarios.add((UsuarioUsuario) Aux);
+				} else if (Aux instanceof UsuarioAdmin) {
+					lista_usuariosAdmin.add((UsuarioAdmin) Aux);
+				}
+			} while (Aux != null);
 			LectorObj.close();
-		}catch(EOFException e){
-		}catch(ClassNotFoundException e){
+		} catch (EOFException e) {
+		} catch (ClassNotFoundException e) {
 			System.out.println("Error: " + e.getMessage());
-		}
-		
-		/*try{
-			ObjectInputStream LectorObj = new ObjectInputStream(new FileInputStream("Jugadas.dat"));
-			Jugada Aux;
-			do{
-				Aux=(Jugada)LectorObj.readObject();
-			    Futbolista.listaTotalJugadas.add(Aux);
-			}while(Aux!=null);
-			LectorObj.close();
-		}catch(EOFException e){
-		}catch(ClassNotFoundException e){
-			System.out.println("Error: " + e.getMessage());
-		}*/
-		try{
-			ObjectInputStream LectorObj = new ObjectInputStream(new FileInputStream("Usuarios.dat"));
-			Usuario Aux;
-			do{
-				Aux=(Usuario)LectorObj.readObject();
-			    lista_usuarios.add(Aux);
-			}while(Aux!=null);
-			LectorObj.close();
-		}catch(EOFException e){
-		}catch(ClassNotFoundException e){
-			System.out.println("Error: " + e.getMessage());
-		}
-		try{
-			ObjectInputStream LectorObj = new ObjectInputStream(new FileInputStream("Cancha.dat"));
-			Cancha Aux;
-			do{
-				Aux=(Cancha)LectorObj.readObject();
-			    UsuarioUsuario.Cancha1=Aux;
-			}while(Aux!=null);
-			LectorObj.close();
-		}catch(EOFException e){
-		}catch(ClassNotFoundException e){
-			System.out.println("Error: " + e.getMessage());
-		}
-		for(i=0;i<lista_futbolistas.size();i++){
-			if(lista_futbolistas.get(i) instanceof Arquero){
-				lista_arqueros.add((Arquero)lista_futbolistas.get(i));
-			}
-			else{
-				lista_delanteros.add((Delantero)lista_futbolistas.get(i));
-			}
-		}
-		for(i=0;i<lista_usuarios.size();i++){
-			if(lista_usuarios.get(i) instanceof UsuarioAdmin){
-				lista_usuariosAdmin.add((UsuarioAdmin)lista_usuarios.get(i));
-			}
-			else{
-				lista_usuariosUsuarios.add((UsuarioUsuario)lista_usuarios.get(i));
-			}
 		}
 
 
-		setLista_arqueros();
+		//setLista_arqueros();
 		
 		
 		// primero se le pregunta al usuario si es jugador o admin
@@ -165,42 +116,38 @@ public class MenuDeConsola implements Serializable {
 		Delantero Monato3 = new Delantero("Monato3", "arquero", Jugada, 00,  5);
 		Monato1.listaTotalJugadas.add(Jugadita);
 		lista_arqueros.add(Monato1);
-		lista_delanteros.add(Monato3);
-		lista_futbolistas.add(Monato1);
-		lista_futbolistas.add(Monato3);
+		lista_delanteros.add(Monato3);     
 	}
 
 	private void setLista_delanteros() {
 		Delantero Monatomate = new Delantero("Monatomate", "Delantero", new ArrayList<JugadaCompleja>(), 00, 5);
 		this.lista_delanteros.add(Monatomate);
 	}
-	public  void Guardar() throws FileNotFoundException, IOException{
+	public  void Guardar() throws IOException{
 		int i;
-		ObjectOutputStream SaverFutbolistas = new ObjectOutputStream(new FileOutputStream("Futbolistas.dat"));
-		//ObjectOutputStream SaverJugadas = new ObjectOutputStream(new FileOutputStream("Jugadas.dat"));
-		ObjectOutputStream SaverUsuarios = new ObjectOutputStream(new FileOutputStream("Usuarios.dat"));
-		ObjectOutputStream SaverCancha = new ObjectOutputStream(new FileOutputStream("Cancha.dat"));
-		if (lista_futbolistas.isEmpty()==false){
-			for(i=0;i<lista_futbolistas.size();i++){
-				SaverFutbolistas.writeObject(lista_futbolistas.get(i));
-			}	
-		}
-		/*if (Futbolista.listaTotalJugadas.isEmpty()==false){
-			for(i=0;i<Futbolista.listaTotalJugadas.size();i++){
-				SaverJugadas.writeObject(Futbolista.listaTotalJugadas.get(i));
-			}
-		}*/
-		if (lista_usuarios.isEmpty()==false){
-			for(i=0;i<lista_usuarios.size();i++){
-				SaverUsuarios.writeObject(lista_usuarios.get(i));
+		ObjectOutputStream SaverObjetos = new ObjectOutputStream(new FileOutputStream("Estado_Sistema.dat"));
+		if (lista_arqueros.isEmpty() == false) {
+			for (i = 0; i < lista_arqueros.size(); i++) {
+				SaverObjetos.writeObject(lista_arqueros.get(i));
 			}
 		}
-		
-		SaverFutbolistas.writeObject(UsuarioUsuario.Cancha1);
-		SaverFutbolistas.close();
-		//SaverJugadas.close();
-		SaverUsuarios.close();
-		SaverCancha.close();
+		if (lista_delanteros.isEmpty() == false) {
+			for (i = 0; i < lista_delanteros.size(); i++) {
+				SaverObjetos.writeObject(lista_delanteros.get(i));
+			}
+		}
+		if (lista_usuariosUsuarios.isEmpty() == false) {
+			for (i = 0; i < lista_usuariosUsuarios.size(); i++) {
+				SaverObjetos.writeObject(lista_usuariosUsuarios.get(i));
+			}
+		}
+		if (lista_usuariosAdmin.isEmpty() == false) {
+			for (i = 0; i < lista_usuariosAdmin.size(); i++) {
+				SaverObjetos.writeObject(lista_usuariosAdmin.get(i));
+			}
+		}
+		SaverObjetos.close();
+
 		
 	}
 }
