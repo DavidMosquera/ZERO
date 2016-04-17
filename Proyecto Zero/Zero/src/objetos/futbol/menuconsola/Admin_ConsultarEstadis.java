@@ -1,6 +1,8 @@
 package objetos.futbol.menuconsola;
 
-public class Admin_ConsultarEstadis extends OpcionDeMenu{
+import java.io.Serializable;
+
+public class Admin_ConsultarEstadis extends OpcionDeMenu implements Serializable{
 	void ejecutar(){
 		
 	}

@@ -1,6 +1,8 @@
 package objetos.futbol.menuconsola;
 
-public class Admin_ExplicacionJugadaDeUnJugador extends Admin_ConsultarListaJugadasDeUnJugador{
+import java.io.Serializable;
+
+public class Admin_ExplicacionJugadaDeUnJugador extends Admin_ConsultarListaJugadasDeUnJugador implements Serializable{
 	String elegir;
 	void ejecutar(){
 		a=MenuDeConsola.lista_delanteros.size();

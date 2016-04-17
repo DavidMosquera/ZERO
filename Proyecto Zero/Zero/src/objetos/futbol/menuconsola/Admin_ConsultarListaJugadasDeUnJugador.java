@@ -1,8 +1,11 @@
 package objetos.futbol.menuconsola;
+
+import java.io.Serializable;
+
 //URGENTE!
 //saber como sacar la descripcion de la jugada compleja
 
-class Admin_ConsultarListaJugadasDeUnJugador extends Admin_ConsultarInfo{
+class Admin_ConsultarListaJugadasDeUnJugador extends Admin_ConsultarInfo implements Serializable{
 	String elegir;
 	void ejecutar(){
 		mostrar_jugadas_complejas();

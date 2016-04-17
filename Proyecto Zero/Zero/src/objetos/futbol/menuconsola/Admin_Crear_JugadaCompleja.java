@@ -1,5 +1,6 @@
 package objetos.futbol.menuconsola;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -7,10 +8,10 @@ import java.util.Scanner;
 import objetos.futbol.JugadasPrimitivas.*;
 import objetos.futbol.jugadores.*;
 
-public class Admin_Crear_JugadaCompleja extends OpcionDeMenu {
+public class Admin_Crear_JugadaCompleja extends OpcionDeMenu implements Serializable{
 	private String opc;
 	private String estilo;
-	private Scanner scanner = new Scanner(System.in);
+	private transient Scanner scanner = new Scanner(System.in);
 	private ArrayList<jugadaPrimitiva> Jp = new ArrayList<jugadaPrimitiva>();
 	private String nombre;
 	private String expli;
@@ -86,7 +87,7 @@ public class Admin_Crear_JugadaCompleja extends OpcionDeMenu {
 					 }
 					 else if(y==2){
 						 Jp.add(new Retroceder((int)1000,"Retoceder"));
-						 
+						 break;
 					 }
 					 else if(y==3){
 						 Jp.add(new GirarDerecha((int)1000,"Derecha"));

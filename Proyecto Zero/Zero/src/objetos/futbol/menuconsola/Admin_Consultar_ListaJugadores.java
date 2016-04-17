@@ -1,10 +1,11 @@
 package objetos.futbol.menuconsola;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Admin_Consultar_ListaJugadores extends OpcionDeMenu{
+public class Admin_Consultar_ListaJugadores extends OpcionDeMenu implements Serializable{
 	private String esperar;
-	Scanner scanner =new Scanner(System.in); 
+	transient Scanner scanner =new Scanner(System.in); 
 	int a;
 	int b;
 	void ejecutar(){

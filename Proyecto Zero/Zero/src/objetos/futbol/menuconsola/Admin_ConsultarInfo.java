@@ -1,7 +1,9 @@
 package objetos.futbol.menuconsola;
 
-public class Admin_ConsultarInfo extends Admin_Consultar_ListaJugadores{
-	//para devolver al menu se usará (t) como opción
+import java.io.Serializable;
+
+public class Admin_ConsultarInfo extends Admin_Consultar_ListaJugadores implements Serializable{
+	//para devolver al menu se usarÃ¡ (t) como opciÃ³n
 	int opc_1;
 	String opc;
 	//duda con este punto
@@ -36,7 +38,7 @@ public class Admin_ConsultarInfo extends Admin_Consultar_ListaJugadores{
 				return 9999;
 			}
 			else{
-				System.out.println("ERROR NUMERO INGRESADO NO VÁLIDO");
+				System.out.println("ERROR NUMERO INGRESADO NO VÃ�LIDO");
 			}
 		}
 	}
