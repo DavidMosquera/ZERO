@@ -67,7 +67,7 @@ public class UsuarioAdmin extends Usuario implements Serializable{
 		Opciones.add(new Admin_ConsultarInfo());					// opcion (5) consultar info jugadores
 		Opciones.add(new Admin_ConsultarListaJugadasDeUnJugador());	// opcion (6) consultar info jugada especifica
 		Opciones.add(new Admin_ExplicacionJugadaDeUnJugador());		// opcion (7) explicion jugada compleja
-		
+		Opciones.add(new Admin_agregar_quitar_jugada_compleja()); 	// opcion (8) quitar o agregar Jc 
 		
 	}
 	

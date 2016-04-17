@@ -56,6 +56,8 @@ public class MenuDeConsola implements Serializable {
 					lista_usuariosUsuarios.add((UsuarioUsuario) Aux);
 				} else if (Aux instanceof UsuarioAdmin) {
 					lista_usuariosAdmin.add((UsuarioAdmin) Aux);
+				}else if (Aux instanceof JugadaCompleja) {
+					Futbolista.listaTotalJugadas.add((JugadaCompleja) Aux);
 				}
 			} while (Aux != null);
 			LectorObj.close();
@@ -144,6 +146,11 @@ public class MenuDeConsola implements Serializable {
 		if (lista_usuariosAdmin.isEmpty() == false) {
 			for (i = 0; i < lista_usuariosAdmin.size(); i++) {
 				SaverObjetos.writeObject(lista_usuariosAdmin.get(i));
+			}
+		}
+		if (Futbolista.listaTotalJugadas.isEmpty() == false) {
+			for (i = 0; i < Futbolista.listaTotalJugadas.size(); i++) {
+				SaverObjetos.writeObject(Futbolista.listaTotalJugadas.get(i));
 			}
 		}
 		SaverObjetos.close();

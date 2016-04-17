@@ -44,13 +44,13 @@ public class Admin_crear_jugador extends OpcionDeMenu implements Serializable{
 	private void elegir_jugadas_complejas(ArrayList Jc){
 		System.out.println("elegir jugadas complejas");
 		for (int i =0;i<3;i++){
-			for(int j=0;j<Futbolista.listaTotalJugadas.size();j++){
-				System.out.println("("+j+") "+Futbolista.listaTotalJugadas.get(j));
+			for(int j=0;j<Delantero.listaTotalJugadas.size();j++){
+				System.out.println("("+j+") "+Delantero.listaTotalJugadas.get(j));
 			}
 			while(true){
 				try{	
 					int z=scanner.nextInt();
-					Jc.add((JugadaCompleja)Futbolista.listaTotalJugadas.get(z));
+					Jc.add((JugadaCompleja)Delantero.listaTotalJugadas.get(z));
 					System.out.println("ingreso "+Jc.get(i));
 					break;
 				}
