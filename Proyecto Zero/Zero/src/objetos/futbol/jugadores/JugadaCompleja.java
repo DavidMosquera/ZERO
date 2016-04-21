@@ -1,9 +1,10 @@
 package objetos.futbol.jugadores;
+import java.io.Serializable;
 import java.util.ArrayList;
 import objetos.futbol.JugadasPrimitivas.*;
 import objetos.futbol.menuconsola.UsuarioAdmin;
 
-public abstract class JugadaCompleja {
+public abstract class JugadaCompleja extends Jugada implements Serializable{
 	String nombreJugada;//revisar bien encapsulamiento-No se debe cambiar luego de establecer
 	String fechaCreacion; //dia-mes-año -----No se debe cambiar luego de establecer
 	String Explicacion;
@@ -21,6 +22,9 @@ public abstract class JugadaCompleja {
 	public String toString(){
 		return "Jugada " +this.nombreJugada ;
 	}
+	public String getNombre(){
+		return this.nombreJugada ;
+	}
 	
 	public boolean equals (JugadaCompleja JC){
 		if (JC.listaJugadasP.size()==this.listaJugadasP.size()){
@@ -36,11 +40,10 @@ public abstract class JugadaCompleja {
 		}
 		
 	}
-	public abstract String IdentificarJugada();
 	public abstract void ejecutar(); // en las 3 subclases dice en el texto que antes de ejecutar se tiene que calcular la posicion del robot y que no 
 	//infirnja las normas y luego ejecutar la jugada
 	public abstract void parar();
-	public String getExplicacion(){
+	public String getInformacion(){
 		return Explicacion;
 	}
 	
