@@ -1,19 +1,20 @@
 package objetos.futbol.JugadasPrimitivas;
+import java.io.Serializable;
+
 import lejos.nxt.*;
 import lejos.util.Delay; 
 
-public class Patear extends jugadaPrimitiva {
+public class Patear extends jugadaPrimitiva implements Serializable{
 	public Patear (int potencia, String nombre){
 		this.potencia= potencia;
 		this.nombre=nombre;
-		Motor.C.setSpeed(potencia);
+		
 	}
 	public void ejecutar(){ // Ejecuta Patear, se devuelve en 1 segundo.
-		Motor.C.backward();
-		Delay.msDelay(350);
-		Motor.C.forward();
-		Delay.msDelay(400);
-		Motor.C.stop();
+		Motor.C.setSpeed(potencia);
+		Motor.C.rotateTo(-70);
+        Motor.C.rotateTo(70);
+		
 	}
 	public void parar(){
 		Motor.C.stop();
@@ -21,5 +22,8 @@ public class Patear extends jugadaPrimitiva {
 		/*se puede detener en cualquier momento y se debe devovlver 
 		a el punto inicial*/
 		
+	}
+	public String toString(){
+		return this.nombre;
 	}
 }
