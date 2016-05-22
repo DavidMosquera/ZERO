@@ -1,0 +1,62 @@
+
+INTEGRANTES Y AUTORES DE ESTE PROYECTO: JOSE DAVID MOSQUERA TOBON C.C.1020484751
+                                        JUAN SEBASTIAN ARIAS VELÁSQUEZ T.I.98071155609
+                                        JUAN CAMILO LONDOÑO MEJÍA C.C.
+
+
+Archivos incluidos en el src:
+
+objetos.futbol.cancha:
+ - Cancha.java (Clase que maneja todos los atributos y atributos de la cancha del usuario)
+
+objetos.futbol.JugadasPrimitivas:
+ - Adelantar.java (Clase que hace avanzar los dos motores del robot)
+ - GirarDerecha.java (Clase que hace girar a la derecha al robot)
+ - GirarIzquierda.java (Clase que hace girar a la izquierda el robot)
+ - Jugada.java (Super clase abstracta de las jugadas complejas y jugada primitiva)
+ - jugadaPrimitiva.java  ( Super clase abstracta de las jugadas primitivas)
+ - Patear.java (Clase que hace patear al robot)
+ - Retroceder.java (Clase que hace retroceder los dos motores del robot)
+
+objetos.futbol.jugadores:
+ - Arquero.java (Subclase de futbolista, Clase específica para la creación de arqueros)
+ - Delantero.java (Subclase de futbolista, Clase específuca para la creación de delanteros)
+ - Futbolista.java (Super clase abstracta de Arquero y Delantero, clase que define los métodos y atributos para futbolista general)
+ - JugadaCompleja (Super Clase abstracta de las jugadas complejas)
+ - JugadaComplejaDefensiva.java (Subclase de JugadaCompleja, Identifica las jugadas de tipo Defensiva)
+ - JugadaComplejaOfensiva.java (Subclase de JugadaCompleja, Identifica las jugadas de tipo Ofensiva)
+ - JugadaComplejaTiroLibre.java (Subclase de JugadaCompleja, Identifica las jugadas de tipo tiro libre)
+
+objetos.futbol.menuconsola:
+ - Admin_agregar_quitar_jugada_compleja.java (Subclase de Admin_Consultar_ListaJugadores, esta nos permite agregar y quitar jugadas complejas de un jugador)
+ - Admin_Consultar_listaJugadores.java (Subclase de OpcionDeMenu, nos permite consultar la lista de jugadores)
+ - Admin_ConsultarEstadis.java (Subclase de OpcionDeMenu, nos permite consultar las estadísticas del archivo Temporal.txt)
+ - Admin_ConsultarInfo.java (Sublcase de Admin_Consultar_ListaJugadas, nos permite consultar la información de los jugadores)
+ - Admin_ConsultarListaJugadasDeUnJugador.java (Subclase de Admin_ConsultarInfo, nos permite ver la lista de jugadas de un jugador)
+ - Admin_Crear_JugadaCompleja.java (Subclase de OpcionDeMenu, nos permite crear jugadas complejas)
+ - Admin_crear_jugador.java (Subclase de OpcionDeMenu, nos permite crear jugadores)
+ - Admin_ExplicacionJugadadeUnJugador.java (Subclase de Admin_ConsultarListaJugadasDeUnJugador, nos permite encontrar la explicación de una jugada específica de un jugador)
+ - Ejecutable_Temporal.java (Clase que contiene el Main para ser ejecutado el código desde allí)
+ - MenuDeConsola.java (Clase donde se implementan los menús de usuario y administrador, donde se escogen las primeras opciones)
+ - Opcion_adelante_w.java (Clase donde se implementa el ejecutar y parar de la jugada primitiva Adelantar)
+ - Opcion_atras_s.java (Clase donde se implementa el ejecutar y parar de la jugada primitiva Retroceder)
+ - Opcion_girar_derecha_d.java (Clase donde se implementa el ejecutar y parar de la jugada primitiva GirarDerecha)
+ - Opcion_girar_izquierda_a.java (Clase donde se implementa el ejecutar y parar de la jugada primitiva GirarIzquierda)
+ - Opcion_gol_aliado_g.java (clase donde sumamos un gol a la cuenta del delantero y al marcador global)
+ - Opcion_gol_enemigo_f.java (clase donde sumamos un gol al enemigo)
+ - Opcion_inicializar_robot_i.java (Clase donde podemos inicializar el robot y la cancha manual mente)
+ - Opcion_parar_e.java (Clase que nos permite parar todos los motores)
+ - Opcion_parar_partido_p.java (Clase con la que podemos salir y dirigirnos a Administrador en pleno partido)
+ - Opcion_patear_q.java (Clase que implementa el ejecutar y el parar de la jugada primitiva patear)
+ - Opcion_salir_t.java (Clase que nos permite salir del código)
+ - OpcionDeMenu.java (Super clase abstracta de las opciones de menú, de usuario y algunas de administrador)
+ - Usuario.java (Super clase abstracata de UsuarioUsuario y UsuarioAdmin)
+ - UsuarioAdmin.java (Clase que contiene todas las funcionalidades de administrador)
+ - UsuarioUsuario.java (Clase que contiene todas las funcionalidades de Usuario)
+
+Archivos adicionales:
+ - Resultados.txt (Tabla final que se imprime y se guarda desde el código)
+ - Temporal.txt (Archivo donde se guardan las estadisticas temporales en el código)
+ - Estado_Sistema.dat (Archivo donde guardamos los objetos serializados)
+ - Memoria.PDF (Memoria del trabajo)
+
